@@ -1,5 +1,6 @@
 class TimetablesController < ApplicationController
   before_action :set_timetable, only: [:show, :edit, :update, :destroy]
+  before_action :admin_test
 
   # GET /timetables
   # GET /timetables.json
@@ -70,5 +71,13 @@ class TimetablesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def timetable_params
       params.require(:timetable).permit(:name, :date, :location, :content, :start_time, :end_time)
+    end
+    
+    def admin_test
+      if current_administrator && current_administrator.admin?
+        #nothing
+      else
+        redirect_to root_path
+      end
     end
 end

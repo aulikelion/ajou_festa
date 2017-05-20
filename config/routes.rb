@@ -1,11 +1,30 @@
 Rails.application.routes.draw do
-  devise_for :users
+    
+  resources :abouts
+  resources :neons
+  get 'boothinfo/index'
+  get 'boothinfo/map'
+  
+  resources :booths
   resources :timetables
+  
   root 'home#index'
+  
   get 'home/lineup'
   get 'home/timetable'
   get 'home/booth'
   get 'home/map'
+  get 'home/neon'
+  get 'home/index'
+  get 'home/tt'
+  
+  devise_for :administrators #관리자 로그인 관련 설정입니다.
+  
+  get 'home/administrator_sitemap'
+  
+  get 'admin' => 'home#administrator_sitemap' #root 주소 뒤에 /admin만 붙여도 관리자 페이지 갈 수 있게 해놨어요.
+
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

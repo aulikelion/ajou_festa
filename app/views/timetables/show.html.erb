@@ -1,34 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+<p id="notice" style="margin-top:100px"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<p style="margin-top:100px;font-size:18px;">  
+  <strong >Name:</strong>
   <%= @timetable.name %>
 </p>
 
-<p>
+<p style="font-size:18px;">
   <strong>Date:</strong>
   <%= @timetable.date %>
 </p>
 
-<p>
+<p style="font-size:18px;"> 
   <strong>Location:</strong>
   <%= @timetable.location %>
 </p>
 
-<p>
+<p style="font-size:18px;">
   <strong>Content:</strong>
   <%= @timetable.content %>
 </p>
 
-<p>
+<p style="font-size:18px;">
   <strong>Start time:</strong>
   <%= @timetable.start_time %>
 </p>
 
-<p>
+<p style="font-size:18px;">
   <strong>End time:</strong>
   <%= @timetable.end_time %>
 </p>
 
 <%= link_to 'Edit', edit_timetable_path(@timetable) %> |
-<%= link_to 'Back', timetables_path %>
+<%= link_to 'Back', timetables_path %> |
+<%= link_to 'New Timetable', new_timetable_path %>
+</div>

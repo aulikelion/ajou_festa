@@ -1,0 +1,65 @@
+<!--부스 리스트, 정보 입력--> <!--검색창 네비에 가려진 것 조정-->
+<style>  
+  img{
+    width:50px;
+  }
+  .booth_search{
+    padding-top:60px; 
+  }
+</style>
+
+<p id="notice"><%= notice %></p>
+
+<%= search_form_for @search do |f| %>
+  <div class = "field">
+    <%= f.label :title_cont, "부스 이름으로 검색" %>   <!--부스 이름(title)로 검색-->
+    <%= f.text_field :title_cont %>
+  </div>
+  <div class ="actions"><%= f.submit "검색" %></div>
+<% end %>
+
+
+<h1>Listing Booths</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Day2</th>
+      <th>Day3</th>
+      <th>Choose</th>
+      <th>Title</th>
+      <th>Area</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Tag list</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @booths.each do |booth| %>
+      <tr>
+        <td><%= booth.sche %></td>
+        <td><%= booth.sche_2 %></td>
+        <td><%= booth.day3 %></td>
+        <td><%= booth.choose %></td>
+        <td><%= booth.title %></td>
+        <td><%= booth.area %></td>
+        <td><%= booth.name %></td>
+        <td><img src ="<%= booth.image.url%>"></td>
+        <td><%= tag_icons booth.tag_list %></td>
+        <td><%= link_to 'Show', booth %></td>
+        <td><%= link_to 'Edit', edit_booth_path(booth) %></td>
+        <td><%= link_to 'Destroy', booth, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to '모든 부스', booths_path %>
+<br>
+<%= link_to '새 부스', new_booth_path %>
+<br>
+<%= link_to '관리자 사이트맵 바로가기', home_administrator_sitemap_path %>

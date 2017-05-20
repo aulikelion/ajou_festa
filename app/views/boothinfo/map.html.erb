@@ -1,0 +1,12 @@
+
+
+<% if params[:mode] == "주점" then %>
+    <%= image_tag "map.png" %>
+<% elsif params[:mode] == "부스" then %>
+    <%= image_tag "campus_map.png" %>
+<% end %>
+<style>
+    img{
+        max-width:100%;
+    }
+</style>

@@ -1,0 +1,24 @@
+
+<div class="d-flex justify-content-center">
+
+    <h1 style="margin:4em 0 2em 0">관리자 전용 사이트맵</h1>
+
+</div>
+
+<div class="d-flex justify-content-around" style="margin-bottom:5em">
+
+    <a href="<%= root_path %>"><button type="button" class="btn btn-primary btn-lg">메인 페이지로</button></a>
+    <a href="<%= neons_path %>"><button type="button" class="btn btn-primary btn-lg">전광판 수동 제어</button></a>
+    <a href="<%= timetables_path %>"><button type="button" class="btn btn-primary btn-lg">타임테이블 관리</button></a>
+    <a href="<%= booths_path %>"><button type="button" class="btn btn-primary btn-lg">부스 및 주점 관리</button></a>
+    <!--<a href="<%= %>"><button type="button" class="btn btn-primary btn-lg">또 추가할거 있나?</button></a>-->
+
+</div>
+
+<div class="d-flex justify-content-center pb-5">
+    <% if @admin_finder%>
+    	<%= link_to('로그아웃', destroy_administrator_session_path, :method => :delete, :style =>"font-size:2rem") %>
+    <%else%>
+    	<%= link_to('로그인', new_administrator_session_path,  :style =>"font-size:2rem") %>
+    <% end %>
+</div

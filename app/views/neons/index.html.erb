@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="margin-top:10rem">전광판 수동 제어창</h1>
+<hr>
+<h2>입력된 글 내용들이 랜덤으로 메인화면에 노출됩니다.</h2>
+<hr>
+<h3>만약 현시간에 맞는 원래 타임테이블 정보를 노출시키려면, <br><strong>수동 입력하신 모든 전광판 내용</strong>을 지워주셔야 됩니다.</h3>
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>전광판에 표시되는 내용</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @neons.each do |neon| %>
+      <tr>
+        <td><%= neon.message %></td>
+        <td><%= link_to '자세히', neon %> | </td>
+        <td><%= link_to '수정', edit_neon_path(neon) %> | </td>
+        <td><%= link_to '삭제', neon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '새로 전광판 메세지 만들기', new_neon_path %> 
+<br>
+<%= link_to '관리자 사이트맵 바로가기', home_administrator_sitemap_path %>

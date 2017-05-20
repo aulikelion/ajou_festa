@@ -12,30 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :'무대 주인공(또는 단체명)' %><br>
+    <%= f.text_field :name,placeholder:'(ex)마마무', :style => "width:50%;"  %>
   </div>
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.number_field :date %>
+    <%= f.label :'행사 날짜(몇일인지)' %><br>
+    <%= f.number_field :date, in: 24.0..26.0, step: 1.0,placeholder:'24, 25, 26 중 숫자로만 입력해주세요, (ex)26' , :style => "width:50%;"%>
   </div>
   <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.label :'행사 장소' %><br>
+    <%= f.text_field :location,placeholder:'(ex)노천극장', :style => "width:50%;" %>
   </div>
   <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_field :content %>
+    <%= f.label :'행사의 내용' %><br>
+    <%= f.text_field :content,placeholder: '전광판에 표시될 내용입니다', :style => "width:50%;"%>
   </div>
   <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.number_field :start_time %>
+    <%= f.label :'시작하는 시간' %><br>
+    <%= f.number_field :start_time,in: 1100..2400, step: 1.0, placeholder:'4자리 숫자로 입력해주세요. (ex)오후1시10분 => 1310, 오후9시정각 => 2100' , :style => "width:50%;"%>
   </div>
   <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.number_field :end_time %>
+    <%= f.label :'끝나는 시간' %><br>
+    <%= f.number_field :end_time,in: 1100..2400, step: 1.0, placeholder:'4자리 숫자로 입력해주세요.', :style => "width:50%;"%>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+  
+
 <% end %>

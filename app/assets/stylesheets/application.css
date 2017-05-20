@@ -13,3 +13,461 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+    font-family: "Spoqa Han Sans", sans-serif;
+}
+
+html {
+  font-size: 16px;
+} 
+
+main > div.container {
+  min-height: 90vh;
+}
+
+main.login {
+  background: url("login_back.png") no-repeat center center fixed;
+  background-size: cover;
+}
+main {
+  padding-top:1vh;
+  padding-bottom:1vh;
+}
+
+form.new_administrator {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 768px;
+}
+
+footer.footer {
+  background: #f4f4f4;
+}
+
+.full-width {
+  width: 100%;
+}
+ 
+
+/*반응형 전광판*/
+
+/*@media (min-width: 600px){*/
+/*    .neon_container{*/
+/*      border:black;*/
+/*    }*/
+
+/*marquee{*/
+/*  visibility: visible;*/
+/*}*/
+ 
+ /*메인 header image*/
+.main-image {
+  background: url('mainBackground.png') no-repeat center center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+/*.section{*/
+/*  background: url('mainTitle.png') fixed no-repeat center center;*/
+/*  background-size: cover;*/
+/*  width: 90vw;*/
+/*  height: 100vh;*/
+/*}*/
+
+#maintitle{
+  position: absolute; 
+  top: 10vh; 
+  bottom: 0; 
+  left: 0; 
+  right: 0;
+  margin: auto; 
+  height: auto; 
+  width: 90vw;
+}
+
+/*라인업 이미지*/
+.main-lineup{
+    overflow:hidden;
+    height:auto;
+    
+}
+
+  @media (min-width: 480px){
+    .lineup-button{
+      display: none;
+      
+    }
+    #main-lineup { 
+      background: url('linesamplefinal.png') no-repeat center center;
+      background-size: cover;
+      width: 100vw;
+      height: 120vh;
+      
+    }
+ } 
+ 
+ @media (max-width: 480px){
+    #main-lineup { 
+      background: url('lineup26.png') no-repeat center center;
+      background-size: cover;
+      width: 100vw;
+      min-height: 90vh;  
+    }
+ } 
+ 
+ 
+ 
+ /* 타임테이블 버튼 */
+ 
+  @media (min-width: 480px){
+    .timetable-button{
+      display: none;
+    }
+ } 
+ 
+ @media (max-width: 481px){
+   .timetable-button2{
+     display: none;
+   }
+ } 
+ 
+ 
+ 
+ 
+ /*navbar font 적용*/
+.navbar {
+  font-family: "Montserrat";
+  } 
+ 
+ @media (min-width: 480px){
+        .nav-mobile{
+          display: none !important;
+        }
+        .nav-list {
+          float: right;
+          display: flex;
+          flex-direction: row;
+          line-height: 45px;
+          height: 50px;
+        }
+         .navbar {
+            -webkit-box-shadow: 0 8px 6px -6px #999;
+            -moz-box-shadow: 0 8px 6px -6px #999;
+            background-color: white;
+            box-shadow: 0 8px 6px -6px #999;
+            /* the rest of your styling */
+        }
+        .navbar-brand {
+          color: rgba(100, 100, 100, 0.5) !important;
+        }
+          #navlogo img {
+            width: 50px;
+            height: auto;
+          }
+
+          #nav-web img {
+              width: 50px;
+              height: auto;
+          }
+      .mainImage{
+        width: 100%;
+        height: auto;
+
+        }
+      }
+
+        @media (max-width: 480px) {
+          .nav-web{
+            display: none !important;
+          }
+          .nav-mobile img{
+            width: 10vw;
+            height: auto;
+
+          }
+
+          .nav-mobile{
+            display: flex;
+          }
+          .nav-container{
+
+            line-height: 45px;
+          }
+          .nav-list {
+            float: right;
+            display: flex;
+            flex-direction: row;
+            height: 50px;
+          }
+           .navbar {
+              -webkit-box-shadow: 0 8px 6px -6px #999;
+              -moz-box-shadow: 0 8px 6px -6px #999;
+              box-shadow: 0 8px 6px -6px #999;
+              /* the rest of your styling */
+          }
+          .navbar-brand {
+            color: rgba(100, 100, 100, 0.5) !important;
+          }
+
+          #navlogo img {
+              width: 10vw;
+              height: auto;
+          }
+        .mainImage{
+          width: 100vw;
+          height: auto;
+
+        }
+        
+      
+        
+      }
+    
+    /*body {*/
+/*  background-color: #222222;*/
+/*  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;*/
+/*}*/
+
+#container {
+  width: 500px;
+  margin: auto;
+   z-index: 1;
+}
+
+#about_container {
+  width:517px;
+  margin: auto;
+}
+
+
+
+
+.neon {
+  position: relative;
+  padding-top : 7vh;
+}
+/*Neon*/
+p {
+  text-align: left;
+  font-size: 4vw;
+  margin: 20px 0 20px 0;
+}
+
+p:nth-child(1) a {
+  color: #fff;
+  animation: neon1 1s ease-in-out infinite alternate;
+}
+
+@keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+  }
+}
+
+/*REEEEEEEEEEESPONSIVE*/
+
+@media (max-width: 480x) {
+  #container {
+    width: 200%;
+  }
+  p {
+    font-size:10vw;
+  }
+  .mainImage {
+    width:180%;
+    position: center;
+  }
+}
+
+
+
+
+
+/*footer css 적용*/
+  #main-footer{
+    color: #767070;
+    text-align: center !important;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.footer_hr {
+    margin-bottom: 40px;
+    border-color: #767070 !important;
+    border-width: 1px 0px 0px 0px !important;
+    width: 15%;
+}
+.footer {
+}
+#main-footer>p {
+    font-size: 14px;
+    margin-top: 30px;
+    margin-bottom: 5px !important;
+}
+
+/*footer css End*/
+
+
+/* 지도 위치별 부스/주점 카드배경색깔 지정 */
+.A {
+  background-color: rgba(254, 255, 153, 1);
+}
+.B {
+  background-color: rgba(255, 153, 154, 1);
+}
+.C {
+  background-color: rgba(153, 205, 255, 1);
+}
+.D {
+  background-color: rgba(153, 255, 205, 1);
+}
+
+/* 지도위치별 배경색깔 end */
+
+
+
+
+
+/* 모바일 화면에서 카드 폰트크기 조정 */
+@media (max-width: 480px){
+  #booths > div > div > div > h5{
+    font-size: 4.5vw;
+  }
+  #booths > div > div > div > p {
+    font-size: 4vw;
+  }
+}
+/* 여기까지 */
+
+/* PC화면에서 폰트크기 조정 */
+@media (min-width: 480px) and (max-width: 700px) {
+  #booths > div > div > div > h5{
+    font-size: 4vw;
+  }
+        
+  #booths > div > div > div > p {
+    font-size: 3vw;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1000px) {
+  #booths > div > div > div > h5{
+    font-size: 3vw;
+  }
+        
+  #booths > div > div > div > p {
+    font-size: 2vw;
+  }
+}
+
+@media (min-width: 1000px){
+  #booths > div > div > div > h5{
+    font-size: 2vw;
+  }
+        
+  #booths > div > div > div > p {
+    font-size: 1.75vw;
+  }
+}
+/* 여기까지. 부스 이름이 길 수도 있어서 일부러 카드 대비 폰트크기 조금 작게 함 */
+
+/* 부스 페이지 폰트 지정 */
+#booth-background-image > div > div > div > h1,
+#booths > div > div > div > div > h2,
+#booths > div > div > div > div > button, 
+#booths > div > div > div > h5, 
+#booths > div > div > div > p {
+  font-family: 경기천년제목!important;
+}
+
+
+
+/* 부스 페이지 필터링 버튼 크기조정(일정 너비로 가면 날짜, 유형이라는 글자가 버튼이랑 겹쳐보였음 */
+#booths > div > div > div > div > button {
+  padding: 0.5rem;
+}
+
+
+/* 부스 리스트 페이지에 배경화면? 넣어봤음 */
+@media (max-width: 767px){
+  #booth-background-image {
+    margin-top: 3rem;
+    height: 50vh;
+    width: 100%;
+    background: url(booth.png) no-repeat center center;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 768px){
+  #booth-background-image {
+    margin-top: 3rem;
+    height: 80vh;
+    width: 100%;
+    background: url(booth.png) no-repeat center center;
+    background-size: cover;
+  }
+}
+
+.black {
+  background-color: rgba(0,0,0,0.5);
+  width: inherit;
+  height: inherit;
+  
+}
+
+
+/* 배경화면에 글, 검색기능 넣기 위한 디스플레이 설정 */
+div.black > div.container {
+  
+}
+
+#booth-background-image > div > div > div > h1{
+  display: table-cell;  
+  vertical-align: middle;
+  text-align: center;
+  
+}
+
+h1.title {
+  border-bottom : none;
+}
+
+/* 검색창이 너무 길어서 너비, 높이 수정  */
+#booth-background-image > div > div > div > input {
+  text-align: center;
+  width: 20rem;
+  height: 3rem;
+}
+
+#booth-background-image > div > div.container {
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+
+#new_booth > div:nth-child(3) > p {
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+
+
+#page-top > footer > div > div:nth-child(2) > img {
+  width: 3rem;
+  height: 3rem;
+}

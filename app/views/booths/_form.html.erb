@@ -1,0 +1,66 @@
+<style> <!--선택 안보이는 것 해결 -->
+  select{
+    display:block;  
+  }
+  *{
+    font-color:white;
+  }
+</style>
+<%= form_for(@booth) do |f| %>
+  <% if @booth.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booth.errors.count, "error") %> prohibited this booth from being saved:</h2>
+
+      <ul>
+      <% @booth.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+    <%= f.label :sche %><br>
+    <%= f.date_select(:sche, :order => [:month, :day]) %>
+    </div>
+    
+    
+  
+    <div class="field">
+    <%= f.label :sche_2 %><br>
+    <%= f.date_select(:sche_2, :order => [:month, :day]) %>
+    </div>  
+  
+    <div class="field">
+    <%= f.label :day3 %><br>
+    <%= f.date_select(:day3, :order => [:month, :day]) %>
+    </div>
+    
+  <div class="field">
+    <%= f.label :choose %><br>
+    <%= f.select(:choose, ['선택', '주점', '부스']) %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :area %><br>
+    <%= f.select(:area, ['A', 'B', 'C', 'D']) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+  <div>
+    <%= f.label :tag_list %><br>
+    <%= f.text_field :tag_list, placeholder: '하나 이상의 태그는 콤마(,)로 구분하여 입력하세요.' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

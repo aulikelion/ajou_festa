@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>Day1:</strong>
+    <%= @booth.sche %>
+</p>
+
+<p>
+    <strong>Sche2:</strong>
+    <%= @booth.sche_2 %>
+</p>
+
+<p>
+    <strong>Day3:</strong>
+    <%= @booth.day3 %>
+</p>
+
+
+
+<p>
+    <strong>Choose:</strong>
+    <%= @booth.choose %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @booth.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @booth.title %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @booth.area %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <img src="<%= @booth.image.url%>">
+</p>
+<p>
+  <strong>Tag list:</strong>
+  <%= @booth.tag_list %>
+</p>
+
+<%= link_to 'Edit', edit_booth_path(@booth) %> |
+<%= link_to 'Back', booths_path %>

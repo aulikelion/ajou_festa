@@ -1,25 +1,132 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>2017 AJOU FESTIVAL</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <script src="//npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <!-- 필터링 하는 isotope.js 라이브러리 -->
+  <script src="//unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
   <%= csrf_meta_tags %>
+
+  <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <!-- Booth list 검색하는 listjs 라이브러리 -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <!-- 스크롤 하면 하나씩 등장하는 scollreveal.js 라이브러리 -->
+  <script src="//unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+  <!-- 모바일 버튼으로 라인업 보기 -->
+  <script>
+    function button24_click(){
+      document.getElementById('main-lineup').style.backgroundImage= "url(assets/lineup24.png)"
+    }
+    
+    function button25_click(){
+      document.getElementById('main-lineup').style.backgroundImage= "url(assets/lineup25.png)"
+    }
+    
+    function button26_click(){
+      document.getElementById('main-lineup').style.backgroundImage= "url(assets/lineup26.png)"
+    }
+  </script>
+
+  
 </head>
-<body>
 
-<nav class="main-nav">
-  <h1>navbar</h1>
-</nav>
 
-<!--디바이스 젬 경고창 팝업을 위한 두줄 -->
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
-<%= yield %>
+
+
+
+<body class="loading <% if request.path.include?(boothinfo_index_path) then %>booths<% end %>" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<!--navbar start-->
+  <nav class="navbar navbar-toggleable-md fixed-top navbar-light bg-faded">
+        
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a data-scroll class="navbar-brand" id="navbarlogo" href="<%= root_path %>">
+          <img src="<%= image_path 'navlogo.png' %>" width="40" height="40" class="d-inline-block align-top" alt="">
+        </a>
+         <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav mr-auto"></ul>
+            <ul class="nav navbar-nav navbar-right gnb">
+              <li class="nav-item"  data-menuanchor="main-lineup">
+                <a data-scroll class="nav-link" id="navlineup" href="../../#main-lineup">LINEUP</a>
+              </li>
+              <li class="nav-item" data-menuanchor="main-timetable">
+                <a data-scroll class="nav-link" id="navtimetable" href="../../#main-timetable">TIMETABLE</a>
+              </li>
+              <li class="nav-item">
+                <a data-scroll class="nav-link" id="navmap" href="../../home/map">MAP</a>
+              </li>
+              <li class="nav-item">
+                <a data-scroll class="nav-link" data-turbolinks="false" href="../boothinfo/index">BOOTH&PUB</a>
+              </li>
+            <!--<% if @admin_finder ==true %>  관리자 페이지로 가는 nav를 추가했습니다. 로그인 안되어있으면 로그인 페이지로 갑니다. 관련 메소드는 apllication_controller.rb에 만들어놨습니다. -->
+            <!--  <li class="nav-item">-->
+            <!--    <a data-scroll class="nav-link" data-turbolinks="false" href="<%=home_administrator_sitemap_path%>">ADMIN</a>-->
+            <!--  </li>-->
+            <!--<% else %>-->
+            <!--  <li class="nav-item">-->
+            <!--    <a data-scroll class="nav-link" data-turbolinks="false" href="<%=new_administrator_session_path%>">ADMIN</a>-->
+            <!--  </li>-->
+            <!--<% end %>-->
+            </ul>
+      </div>
+    </nav>
+    <!--navbar end-->
+    
+    
+    <main class="<% if request.path.include?(new_administrator_session_path) then %>login<% end %>">
+      <%= yield %>
+    </main>
+    
+    
+    <!--footer-->
+    <footer class="footer">
+    <div class = "wrapper"> 
+      <div class="container pt-2 pb-2">
+        <div class="row mb-2">
+          <div class="col-md-6 col-lg-6 col-xs-12 col-sm-8 nav-logo mx-auto">
+            <%= image_tag "aulikelion.png", width: "150px" %> 
+            <%= image_tag "amore_logo.png", width: "80px", height: "80px" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="mt-1 mb-1 mx-auto">
+            <a href="http://plus.kakao.com/home/@aulikelion"><img src="<%= image_path 'kakao' %>" style="width: 40px; height: 40px;"></a>
+            <a href="http://www.aulikelion.club/"><img src="<%= image_path 'explorer' %>" style="width: 40px; height: 40px; margin: 0 10px;"></a>
+            <a href="https://www.facebook.com/aulikelion/"><img src="<%= image_path 'facebook' %>" style="width: 40px; height: 40px;"></a>
+            <a style ="margin-left: 15px; text-align: center; color: black; font-size: 20px; font-family: 경기천년제목;"
+            <%= link_to 'Developers', abouts_path%> </a>  <!-- Developers를 버튼으로 하면 footer가 너무 커져서 일부러 버튼형식을 없애고 footer를 최소화함. -->
+            
+          </div>
+        </div>
+
+<!-- Developers 버튼 형식으로 하는 코드 -->
+          <!--<div class = "hi"> -->
+          <!--  <a class="btn btn-primary btn-lg"  role="button" -->
+          <!--  style ="width: 200px; text-align: center; background-color: #f4f4f4; border-color: black;  -->
+          <!--  color: black; border-width: 2px; font-family: 경기천년제목;" <%= link_to 'Developers', abouts_path%> </a>-->
+          <!--</div>-->
+
+
+      </div>
+    </div>
+      <script>
+        smoothScroll.init();
+      </script> 
+    </footer>
+
 
 </body>
 </html>

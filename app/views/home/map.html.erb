@@ -1,2 +1,166 @@
-<h1>Home#map</h1>
-<p>Find me in app/views/home/map.html.erb</p>
+<h1><br></h1>
+
+
+
+<div class="container" id="booths">
+  <%= image_tag "campus_map.png", id:"map" %>
+  <!--부스 페이지에 배경으로 부스/주점 이미지 삽입-->
+
+    <div class="grid list row ml-0 mr-0 mb-4">
+    <% card_count = 1 %>
+    <% column = 1 %>
+    <% @booths.each do |booth| %>
+    
+      <% if "#{booth.choose}" == "주점" %>
+        <% t = "odd" %>
+      <% else %>
+        <% t = "even" %>
+      <% end %>
+      <!-- 지도 위치별 디자인 -->
+      <% if booth.area == "A" %> 
+        <% area = "A" %>
+      <% elsif booth.area == "B" %>
+        <% area = "B" %>
+      <% elsif booth.area == "C" %>
+        <% area = "C" %>
+      <% elsif %>
+        <% area = "D" %>
+      <% end %>
+    <% end %>
+<!-- -->
+  
+  <div class="container" id="booths">
+    <div class="row justify-content-center ml-0 mr-0">
+      <div class="filters col-md-4">
+        <div class="row">
+          <div class="filters col-md-4 btn-group js-radio-button-group p-2 justify-content-center" data-filter-group="type">
+            <button class="btn btn-lg btn-secondary is-checked" data-filter="*">전체</button>
+            <button class="btn btn-lg btn-secondary" data-filter=".A">A구역</button>
+            <button class="btn btn-lg btn-secondary" data-filter=".B">B구역</button></button>
+            <button class="btn btn-lg btn-secondary" data-filter=".C">C구역</button>
+            <button class="btn btn-lg btn-secondary" data-filter=".D">D구역</button>
+          </div>
+        </div>
+      </div>
+    </div> 
+  <div class="row justify-content-center ml-0 mr-0 mt-0 mb-0">
+    <div class="filters col-md-12">
+      <div class="row">
+        <div class="filters col-md-4 btn-group js-radio-button-group p-2 justify-content-center" data-filter-group="date">
+          <button class="btn btn-lg btn-secondary is-checked" data-filter="*">전체</button>
+          <button class="btn btn-lg btn-secondary" data-filter=".day24">24일</button>
+          <button class="btn btn-lg btn-secondary" data-filter=".day25">25일</button>
+          <button class="btn btn-lg btn-secondary" data-filter=".day26">26일</button>
+        </div>
+        
+        <div class="filters col-md-4 btn-group js-radio-button-group p-2 justify-content-center" data-filter-group="type">
+          <button class="btn btn-lg btn-secondary is-checked" data-filter="">전체</button>
+          <button class="btn btn-lg btn-secondary" data-filter=".type_booth">부스</button>
+          <button class="btn btn-lg btn-secondary" data-filter=".type_soju">주점</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+  
+  
+    <div class="grid list row ml-0 mr-0 mb-4">
+      <% card_count = 1 %>
+      <% column = 1 %>
+      <!-- 부스 경우에 따라 필터링. 부스/주점 타입 분류 코드 -->
+      <% @booths.each do |booth| %>
+        <% if "#{booth.choose}" == "부스" %>
+          <% booth_type = "type_booth" %>
+        <% else %>
+          <% booth_type = "type_soju" %>
+        <% end %>
+        
+        <!-- 지도 위치별 색상 디자인을 위한 분류코드 -->
+        <% if booth.area == "A" %> 
+          <% area = "A" %>
+        <% elsif booth.area == "B" %>
+          <% area = "B" %>
+        <% elsif booth.area == "C" %>
+          <% area = "C" %>
+        <% elsif booth.area == "D" %>
+          <% area = "D" %>
+        <% end %>
+        
+        <!-- 부스 만들 때 날짜 3개 선택하고, 선택한 날짜를 문자열로 바꿈 -->
+        <% booth_sche = booth.sche.to_s %>
+        <% booth_day2 = booth.sche_2.to_s %>
+        <% booth_day3 = booth.day3.to_s %>
+        <!-- 날짜 3개 중, 첫번째 날짜가 24일이면 day24로, 25일이면 day25, 26일이면 day26으로 해서 카드의 class에 적용하여 필터링 적용되게 하는 것 -->
+        <% if booth_sche[8,2] == "24" %>
+          <% booth_date_1 = 'day24' %>
+        <% elsif booth_sche[8,2] == "25" %>
+          <% booth_date_1 = 'day25' %>
+        <% elsif booth_sche[8,2] == "26" %>
+          <% booth_date_1 = 'day26' %>
+        <% end %>
+        
+        <% if booth_day2[8,2] == "24" %>
+          <% booth_date_2 = 'day24' %>
+        <% elsif booth_day2[8,2] == "25" %>
+          <% booth_date_2 = 'day25' %>
+        <% elsif booth_day2[8,2] == "26" %>
+          <% booth_date_2 = 'day26' %>
+        <% end %>
+
+        <% if booth_day3[8,2] == "24" %>
+          <% booth_date_3 = 'day24' %>
+        <% elsif booth_day3[8,2] == "25" %>
+          <% booth_date_3 = 'day25' %>
+        <% elsif booth_day3[8,2] == "26" %>
+          <% booth_date_3 = 'day26' %>
+        <% end %>
+        <!--여기까지 날짜별로 카드 분류하는 코드 -->
+
+        <div class="card text-center date-type <%= booth_date_1 %> <%= booth_date_2 %> <%= booth_date_3 %> <%= booth_type %> <%= area %> col-lg-4 col-6 mb-2">
+          <div class="card-block">
+            <h5 class="name card-title title"><%= booth.title %></h5> 
+            <p class="symbol card-text text-center major"><%= booth.name %></p>
+            <div class="row icons">
+              <div class="col-6">
+                <a onclick="showModal(<%= card_count %>)"><i class="fa fa-picture-o icon"></i></a>
+              </div>
+              <div class="col-6">
+                <a href="<%= boothinfo_map_path%>?mode=<%=booth.choose%>"><i class="fa fa-map-marker icon"></i></a>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+        <% card_count += 1 %>
+        <% column += 1 %>
+      <% end %>
+    </div>
+    <div class="modals">
+      <% card_count = 1 %>
+      <% @booths.each do |booth| %>
+        <div id="modal<%= card_count %>" class="modal fade">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title"><%= booth.title %></h4>
+              </div>
+              <div class="modal-body">
+                <p style="text-align:center;"><img src="<%=booth.image.url%>"></p>
+                <p class="text-warning"><small><%=booth.tag_list %></small></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% card_count += 1 %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<style>
+  #map{
+    max-width:100%;
+  }
+</style>

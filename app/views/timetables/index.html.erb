@@ -1,17 +1,25 @@
-<p id="notice"><%= notice %></p>
+<style>  
+#tt_table { border-collapse:collapse; }  
+#tt_table th, #tt_table td, #tt_table tr { border:1px solid black; }
+#tt_table th {padding: 0 20px 0 10px;}
+#tt_table td {padding-left:10px;}
+</style>
 
-<h1>Listing Timetables</h1>
 
-<table>
+<div class="container">
+
+<h1 style="margin-top:100px">전체 타임테이블</h1>
+
+<table id="tt_table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Date</th>
-      <th>Location</th>
-      <th>Content</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th colspan="3"></th>
+      <th>게스트/학교단체</th>
+      <th>날짜(일)</th>
+      <th>장소</th>
+      <th>전광판표시내용</th>
+      <th>시작시간</th>
+      <th>끝나는시간</th>
+      <th colspan="3">비고</th>
     </tr>
   </thead>
 
@@ -24,9 +32,9 @@
         <td><%= timetable.content %></td>
         <td><%= timetable.start_time %></td>
         <td><%= timetable.end_time %></td>
-        <td><%= link_to 'Show', timetable %></td>
-        <td><%= link_to 'Edit', edit_timetable_path(timetable) %></td>
-        <td><%= link_to 'Destroy', timetable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '보기', timetable %></td>
+        <td><%= link_to '수정', edit_timetable_path(timetable) %></td>
+        <td><%= link_to '삭제', timetable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +42,8 @@
 
 <br>
 
-<%= link_to 'New Timetable', new_timetable_path %>
+<%= link_to '새 타임테이블 추가', new_timetable_path %>
+<br>
+<%= link_to '관리자 사이트맵 바로가기', home_administrator_sitemap_path %>
+
+</div>

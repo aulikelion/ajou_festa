@@ -49,6 +49,7 @@ group :development do
   gem 'devise'  #로그인
   gem 'rolify'
   gem 'authority'
-  gem 'letter_opener', :group => :development
+  gem 'ransack'
+  gem 'rails_db' #db
 end
 
