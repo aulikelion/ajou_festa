@@ -13,7 +13,7 @@
  *= require_self
  */
 body.booths {
-  background: #444; }
+  background: #ffffff; }
 
 .modal-body img {
   max-width: 100%;
@@ -29,7 +29,7 @@ div[data-filter-group] button.is-checked {
   color: white !important; }
 
 div.icons i.icon, div.icons a {
-  font-size: 3rem;
+  font-size: 2rem;
   color: black; }
 
 div.grid {

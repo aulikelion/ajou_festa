@@ -11,7 +11,7 @@ Rails.application.config.assets.precompile += %w( bootstrap.css )
 Rails.application.config.assets.precompile += %w( bootstrap.min.css )
 Rails.application.config.assets.precompile += %w( bootstrap.js )
 Rails.application.config.assets.precompile += %w( bootstrap.min.js )
-
+Rails.application.config.assets.precompile += %w( style.sass )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

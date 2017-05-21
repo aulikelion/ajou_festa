@@ -1,124 +1,66 @@
 
 <!--축제 전광판-->
-<div class="main-neon">
-  <div class="neon">
-    <div class="container" style=" width:100%; background:black;">
-      <marquee scrollamount="14" scrolldelay="0">
-        <p style="font-family: 경기천년제목; color:white; font-size:2.1em">
-          <br>
-          <% @main_neon.split("\\").each do |line| %>
-            <%= line %><br>
-          <% end %><!--home_controller.rb에서 코드를 보실 수 있습니다-->
-          <br>
-        </p>
-      </marquee>
+    <div class="main-neon" style="position:absolute;z-index:999;top:0;left:0;width:100%;">
+      <div class="neon">
+        <div class="container" style=" width:100%; ">
+          <marquee scrollamount="14" scrolldelay="0">
+            <p style="font-family: 경기천년제목; color:white; font-size:2.2em">
+              <br>
+              
+              <%= @main_neon %>
+              
+              <br>
+            </p>
+          </marquee>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-
-<div class="main-image">
-    <div class="section">
-      <%= image_tag "mainTitle.png", id: "maintitle" %>
+<!--메인이미지-->
+    <div class="main-image" style="margin-bottom:3em;">
+        <div class="section" >
+          <%= image_tag "mainTitle.png", id: "maintitle" %>
+        </div>
     </div>
-</div>
+
 
 
 <!--라인업 안내 부분-->
 
-<div class="section" id="main-lineup">
-  <div class="lineup-button col-md-3 btn-group js-radio-button-group p-4 justify-content-center">
-    <button type="button" class="btn btn-secondary" onclick="button24_click();" id="button24">5.24</button>
-    <button type="button" class="btn btn-secondary" onclick="button25_click();" id="button25">5.25</button>
-    <button type="button" class="btn btn-secondary" onclick="button26_click();" id="button26">5.26</button>
-</div>
-  
-</div>
+<!--section 밖으로 빼지않으면 이미지랑 겹침-->
+
+    <div id="lineup-title" style="font-family: 발레리노; font-size:1.5em; text-align:center" >
+          <br>
+          <h1>Lineup</h1>
+    </div>
+
+    <div class="section" id="main-lineup">
+    
+      <div class="lineup-button col-md-3 btn-group js-radio-button-group p-4 justify-content-center">
+        <button type="button" class="btn btn-secondary is-checked" onclick="button24_click();" id="button24">24 (수)</button>
+        <button type="button" class="btn btn-secondary" onclick="button25_click();" id="button25">25 (목)</button>
+        <button type="button" class="btn btn-secondary" onclick="button26_click();" id="button26">26 (금)</button>
+      </div>
+      
+    </div>
+
+
 
 <!--타임 테이블-->
 
-<div class="section" id="main-timetable">
 
+
+    <div class="tt_background-image">
+       <%= render 'timetable' %>
+    </div>
     
-
-<div class="container" style="font-size:20px"> <!--이 내용 통째로 나중에 _timetable.html.erb로 이동(파셜로 만들어야됨) -->
-   
-   <div style="font-size:3rem; margin:2em 0; text-align:center">
-      <h1>아주대 축제 타임테이블</h1>
-   </div>
-   
-   
-   <!--모바일에서만 보이는 버튼-->
-   <!--버튼 눌렀을때 필터링해주어야함-->
-      <div class="timetable-button justify-content-center" id="tt_button">
-          <div class="filters col-md-4 btn-group js-radio-button-group p-2 justify-content-center" data-filter-group="date">
-            <button class="btn btn-lg btn-secondary is-checked" data-filter="*">전체</button>
-            <button class="btn btn-lg btn-secondary" data-filter=".tt_card_24">24(수)</button>
-            <button class="btn btn-lg btn-secondary" data-filter=".tt_card_25">25(목)</button>
-            <button class="btn btn-lg btn-secondary" data-filter=".tt_card_26">26(금)</button>
-          </div>
-      </div>
-   
-   
-<div class="grid">
+        
   
-   <div class="tt_column" style="margin:20px auto;text-align:center">  <!--24일 25일 26일 순으로 칼럼이 구분되어 있고, 모바일 환경에서의 별도 환경 구축이 필요합니다.-->
-        <% i=24 #날짜카운터 %>
-        <% 1.upto(3) do %>
-          <div class="col-12 col-md-4 px-5" id="tt_column_<%=i%>">
-              
-              <div class="timetable-button2 mb-5">
-                  <div class="card-header" style="background-color:#a2ffe1">
-                    <h3><strong><%= i %>일</strong></h3>
-                  </div>
-              </div>
-              
-            <!--칼럼 제작에 필요한 코드-->
-            <% @timetable.where(date:i).each do |tt| %>
-                <%  tt_start_hour = tt.start_time.to_s[0..1].to_i - 12
-                    tt_start_hour = tt_start_hour.to_s + " : "
-                    tt_start_minute = tt.start_time.to_s[2..3] + "  ~  "  %>
-                    
-                <% tt_end_hour = (tt.end_time.to_s[0..1].to_i - 12).to_s + " : "
-                tt.end_time.to_s[2..3] == "00" ? tt_end_minute = " 00 " : tt_end_minute = " " + tt.end_time.to_s[2..3] %>
-                
-                <% tt_play_time = (tt.end_time - tt.start_time) * 0.8 #프로그램 소요 시간에 따른 카드 height 길이 부여"%>
-                <% tt_play_time<60 ? tt_play_time = 60 : tt_play_time = tt_play_time # 너무 짧으면 글씨 짤려서 최소값 부여%>
-                <% tt_play_time_original = (tt.end_time - tt.start_time) # 단순히 총 플레이타임 몇분인지 보여주기 위한 값 %>
-            <!--cd 칼럼 제작에 필요한 코드-->
-                <%   %>
-            
-            
-                <div class="card text-center mb-5 tt_card_<%=i%> date-type">
-                  <div class="card-header" >
-                    <h3><strong><%= tt.name %></strong></h3>
-                  </div>
-                  <div class="card-block" style="background-color:#<%=@colorpackage.sample%>">
-                    <h4 class="card-title d-flex align-items-center justify-content-center" style="line-height:1.5em;font-size:16px;height:<%=tt_play_time%>px">
-                        <strong>
-                            <%= tt_start_hour + tt_start_minute %> <%= tt_end_hour + tt_end_minute %>
-                            <br>
-                            <%= tt.location %> <%= "/"%>
-                            <%= tt.content %>
-                        </strong>
-                    </h4>
-                    <a href="#" class="btn btn-success"><strong ><%= "상세보기" %></strong></a>
-                  </div>
-                </div> <!--내일 해야할 것 : 각 칼럼 위쪽에 몇 일자 일정인지 표시해 줄 것 / 모바일 환경 상에서 버튼 개념 부여(원하는 날짜만 볼 수 있게 -->
-            <% end %>
-          </div>
-        <% i += 1%>
-        <% end %>
-     </div>
-   </div>
-   
-</div>
 
-    
-</div>
+
 
 <!--부스 검색 및 전체보기-->
-<div id="main-boothSearch">
+<div id="main-boothSearch"> <!--여기 작업해야 되는거 맞나요? >>성혁 씀-->
 
 </div>
 

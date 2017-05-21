@@ -31,6 +31,7 @@ function showModal(nth) {
 
 $(document).ready(function(){
   
+  
   var $grid = $('.grid').isotope({
     itemSelector: '.date-type'
   });

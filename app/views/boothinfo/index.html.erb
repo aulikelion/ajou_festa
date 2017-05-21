@@ -5,7 +5,7 @@
     <div class="black">
       <div class="container">
         <div class="row mb-2 ml-0 mr-0 title">
-          <h1 class="text-white title mx-auto">부스(낮)/주점(밤) 안내</h1>
+          <h1 class="text-white title mx-auto">부스(낮) & 주점(밤)</h1>
         </div>
         <div class="row justify-content-center mt-0 mb-4 ml-0 mr-0">
           <input class="form-control search" placeholder="이름이나 단체명을 입력하세요!" style="text-align: center;"/>
@@ -15,30 +15,29 @@
   </div>
     
   <div class="container" id="booths">
-    <div class="row justify-content-center ml-0 mr-0 mt-5 mb-5">
+    <div class="row justify-content-center ml-0 mr-0 mt-3 mb-3">
       <div class="filters col-md-12">
         <div class="row">
           <div class="col-md-2">
-            <h2 class="text-center text-white align-middle mt-2">날짜</h2>
+            <h3 class="text-center align-middle mt-3 show1">날짜</h2>
           </div>
           <div class="filters col-md-4 btn-group js-radio-button-group p-2 justify-content-center" data-filter-group="date">
-            <button class="btn btn-lg btn-secondary is-checked" data-filter="*">전체</button>
-            <button class="btn btn-lg btn-secondary" data-filter=".day24">24일</button>
-            <button class="btn btn-lg btn-secondary" data-filter=".day25">25일</button>
-            <button class="btn btn-lg btn-secondary" data-filter=".day26">26일</button>
+            <button class="btn btn-lg btn-secondary is-checked" data-filter="*"><small>전체</small></button>
+            <button class="btn btn-lg btn-secondary" data-filter=".day24"><small>24일</small></button>
+            <button class="btn btn-lg btn-secondary" data-filter=".day25"><small>25일</small></button>
+            <button class="btn btn-lg btn-secondary" data-filter=".day26"><small>26일</small></button>
           </div>
           <div class="col-md-2">
-            <h2 class="text-center text-white align-middle mt-2">유형</h2>
+            <h3 class="text-center align-middle mt-3 show1">유형</h2>
           </div>
-          <div class="filters col-md-4 btn-group js-radio-button-group p-2 justify-content-center" data-filter-group="type">
-            <button class="btn btn-lg btn-secondary is-checked" data-filter="*">전체</button>
-            <button class="btn btn-lg btn-secondary" data-filter=".type_booth">부스</button>
-            <button class="btn btn-lg btn-secondary" data-filter=".type_soju">주점</button>
+            <div class="filters col-md-4 btn-group js-radio-button-group p-2 justify-content-center" data-filter-group="type">
+              <button class="btn btn-lg btn-secondary is-checked" data-filter="*"><small>전체</small></button>
+              <button class="btn btn-lg btn-secondary" data-filter=".type_booth"><small>부스</small></button>
+              <button class="btn btn-lg btn-secondary" data-filter=".type_soju"><small>주점</small></button>
+            </div>
           </div>
         </div>
       </div>
-    </div> 
-  
   
     <div class="grid list row ml-0 mr-0 mb-4">
       <% card_count = 1 %>
@@ -92,25 +91,42 @@
         <% end %>
         <!--여기까지 날짜별로 카드 분류하는 코드 -->
 
-        <div class="card text-center date-type <%= booth_date_1 %> <%= booth_date_2 %> <%= booth_date_3 %> <%= booth_type %> <%= area %> col-lg-4 col-6 mb-2">
-          <div class="card-block">
-            <h5 class="name card-title title"><%= booth.title %></h5> 
-            <p class="symbol card-text text-center major"><%= booth.name %></p>
-            <div class="row icons">
-              <div class="col-6">
-                <a onclick="showModal(<%= card_count %>)"><i class="fa fa-picture-o icon"></i></a>
-              </div>
-              <div class="col-6">
-                <a href="<%= boothinfo_map_path%>?mode=<%=booth.choose%>"><i class="fa fa-map-marker icon"></i></a>
+        <div class="card text-center date-type <%= booth_date_1 %> <%= booth_date_2 %> <%= booth_date_3 %> <%= booth_type %>
+          col-lg-4 col-6 mb-2" style="border:0px solid blue; background-color: #444; padding: 0px!important;">
+          <div class="card-block <%= area %>" style="padding: 0px;">
+
+
+            <div class="card-container-material" style="border-radius: 12px;">
+              <div class="card-material">
+                <div class="card-image-material-<%= booth_type %>">
+                  <div style="background-color: rgba(0,0,0,0.4); width: inherit; height: inherit;">
+                                      
+                    <h5 class="name card-title title text-white"><%= booth.title %></h5>
+                    <p class="symbol card-text text-center major text-white"><%= booth.name %></p>
+                  </div>
+                </div>
+                <div class="card-social-material row icons col-12 justify-content-center">
+                  <div class="col-4">
+                    <a onclick="showModal(<%= card_count %>)"><i class="fa fa-picture-o icon text-white"></i></a>
+                  </div>
+                  <div class="col-3 my-auto" style="font-size: 1.5rem;">
+                    <span class="text-white" style="font-family: 경기천년제목;"><%= area %></span>
+                  </div>
+                  <div class="col-4">
+                    <a href="<%= boothinfo_map_path%>?mode=<%=booth.choose%>"><i class="fa fa-map-marker icon text-white"></i></a>
+                  </div>
+                </div>
+                </div>
               </div>
             </div>
-    
           </div>
-        </div>
+
         <% card_count += 1 %>
         <% column += 1 %>
       <% end %>
     </div>
+    
+    <!-- 카드 목록만들기 -->
     <div class="modals">
       <% card_count = 1 %>
       <% @booths.each do |booth| %>
@@ -118,11 +134,13 @@
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title"><%= booth.title %></h4>
+                <h3 class="modal-title"><%= booth.title %></h4>
               </div>
               <div class="modal-body">
-                <p style="text-align:center;"><img src="<%=booth.image.url%>"></p>
-                <p class="text-warning"><small><%=booth.tag_list %></small></p>
+                <p style="text-align:center;"><%=image_tag(booth.image.url)%></p>
+                <p class="text-warning"><small><%= booth.name %></small></p>
+                <p class="text-warning"><small><%= tag_info_icons booth.tag_list %></small></p>
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
@@ -131,7 +149,9 @@
           </div>
         </div>
         <% card_count += 1 %>
-      <% end %>
+      <% end %> <!-- 카드 끝-->
+      <a class="btn btn-primary btn-lg" role="button" style="width: 100px; text-align: center; background-color: #f4f4f4; border-color: black;  
+      color: black; border-width: 2px; font-family: 경기천년제목; padding: 3px 0px!important; margin-left: 15px;" <a="" href="/boothinfo/index">전체 목록</a>
     </div>
   </div>
 </div>

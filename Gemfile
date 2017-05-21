@@ -47,8 +47,6 @@ group :development do
   gem 'carrierwave' #이미지 저장
   gem 'acts-as-taggable-on', '~> 4.0' #해쉬태그
   gem 'devise'  #로그인
-  gem 'rolify'
-  gem 'authority'
   gem 'ransack'
   gem 'rails_db' #db
 end

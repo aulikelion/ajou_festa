@@ -11,8 +11,17 @@ class HomeController < ApplicationController
       unless @neons.last.nil? #네온 쪽 DB가 비어있는지 판단 => 비어있지 않으면 저장된 메세지들을 랜덤으로 출력
         @main_neon = @neons.order("RANDOM()").first.message #네온 DB를 '남김없이' 지우지 않으면 타임테이블이 출력되지 않습니다. 이 부분은 실제 전광판을 관리하실 분에게 확실히 고지해야 될 것 같습니다.
       else
-        @main_neon = "2017 아주대 축제 사이트" #탐테쪽 뷰 완성되는대로 고쳐야 할 줄
-      end
+        @real_time = (@t.hour.to_s + @t.min.to_s).to_i
+        @real_date = @t.day
+        if @timetable.where(start_time: 1..@real_time, date: @real_date).where("end_time >= ?",@real_time).last.present?
+          @main_neon = @timetable.where(start_time: 1..@real_time, date: @real_date).last.content
+        else
+          @main_neon = "아주대학교 축제기간은 24일(수)부터 26일(금)까지입니다"
+        end
+        if @real_time < 1200 #새벽~점심타임에 (시간 표기상 0100 정도) 엉뚱한 전광판이 나올까봐 보험 들어놨습니다.
+          @main_neon = "아주대학교 축제기간은 24일(수)부터 26일(금)까지입니다"
+        end
+      end# 홈좀 보여줘용 ㅠㅠ
   end
 
   def lineup
@@ -36,20 +45,11 @@ class HomeController < ApplicationController
   end
 
   def map
-    @booths = Booth.all # 이것은 혹시 몰라서 남겨놓은 코드입니당^_^
-    #@t=Time.zone.now
-    #@boothlist = Array.new
-    #@booths.each do |b|
-    #  case @t.day
-    #  when b.sche.day
-    #    @boothlist.push(b)
-    #  when b.sche_2.day
-    #    @boothlist.push(b)
-    #  when b.day3.day
-    #    @boothlist.push(b)
-    #  else
-    #  end
-    #end 
+    if params[:tag]
+      @booths = Booth.tagged_with(params[:tag]) #태그 눌렀다면 해당태그 보여주기
+    else
+      @booths = Booth.all 
+    end
   end
   
   def administrator_sitemap

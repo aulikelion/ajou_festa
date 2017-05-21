@@ -36,13 +36,14 @@
       document.getElementById('main-lineup').style.backgroundImage= "url(assets/lineup26.png)"
     }
   </script>
-
+  <!--카카오톡 링크 공유시 썸네일 및 설명 멘트-->
+  <meta property="og:image" content='http://postfiles11.naver.net/MjAxNzA1MjFfNTIg/MDAxNDk1Mzc4Nzc4NjUz.JtvuRLgNYmDAhJzoRCY9fiSYI72fQHCp0opcpXTd54Ig.mxHnVV7OZhV83Rp67vutb3ONu9mpgfGgJts8lJ7YvGEg.PNG.lipilman/thumbnail.png?type=w2' />
+  <meta property="og:title" content="2017 Ajou Festival" />
+  <meta property="og:description" content="아주대학교 2017 축제 공식 사이트" />
   
+  <!--부스/주점 페이지 카드디자인을 위한 sass 불러오기 -->
+  <%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track' => true %>
 </head>
-
-
-
-
 
 
 <body class="loading <% if request.path.include?(boothinfo_index_path) then %>booths<% end %>" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -59,8 +60,9 @@
          <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav mr-auto"></ul>
             <ul class="nav navbar-nav navbar-right gnb">
+              
               <li class="nav-item"  data-menuanchor="main-lineup">
-                <a data-scroll class="nav-link" id="navlineup" href="../../#main-lineup">LINEUP</a>
+                <a data-scroll class="nav-link" id="navlineup" href="../../#lineup-title">LINEUP</a>
               </li>
               <li class="nav-item" data-menuanchor="main-timetable">
                 <a data-scroll class="nav-link" id="navtimetable" href="../../#main-timetable">TIMETABLE</a>
@@ -71,7 +73,7 @@
               <li class="nav-item">
                 <a data-scroll class="nav-link" data-turbolinks="false" href="../boothinfo/index">BOOTH&PUB</a>
               </li>
-            <!--<% if @admin_finder ==true %>  관리자 페이지로 가는 nav를 추가했습니다. 로그인 안되어있으면 로그인 페이지로 갑니다. 관련 메소드는 apllication_controller.rb에 만들어놨습니다. -->
+            <!--<% if @admin_finder == true %>  관리자 페이지로 가는 nav를 추가했습니다. 로그인 안되어있으면 로그인 페이지로 갑니다. 관련 메소드는 apllication_controller.rb에 만들어놨습니다. -->
             <!--  <li class="nav-item">-->
             <!--    <a data-scroll class="nav-link" data-turbolinks="false" href="<%=home_administrator_sitemap_path%>">ADMIN</a>-->
             <!--  </li>-->
@@ -97,28 +99,23 @@
       <div class="container pt-2 pb-2">
         <div class="row mb-2">
           <div class="col-md-6 col-lg-6 col-xs-12 col-sm-8 nav-logo mx-auto">
-            <%= image_tag "aulikelion.png", width: "150px" %> 
-            <%= image_tag "amore_logo.png", width: "80px", height: "80px" %>
+            <%= image_tag "likelion_logo.png", width: "100px" %> 
+            <%= image_tag "X_icon.png", width: "50px" %>
+            <%= image_tag "amore_logo.png", width: "90px", height: "90px" %>
           </div>
         </div>
         <div class="row">
           <div class="mt-1 mb-1 mx-auto">
             <a href="http://plus.kakao.com/home/@aulikelion"><img src="<%= image_path 'kakao' %>" style="width: 40px; height: 40px;"></a>
             <a href="http://www.aulikelion.club/"><img src="<%= image_path 'explorer' %>" style="width: 40px; height: 40px; margin: 0 10px;"></a>
-            <a href="https://www.facebook.com/aulikelion/"><img src="<%= image_path 'facebook' %>" style="width: 40px; height: 40px;"></a>
-            <a style ="margin-left: 15px; text-align: center; color: black; font-size: 20px; font-family: 경기천년제목;"
-            <%= link_to 'Developers', abouts_path%> </a>  <!-- Developers를 버튼으로 하면 footer가 너무 커져서 일부러 버튼형식을 없애고 footer를 최소화함. -->
-            
+            <a href="https://www.facebook.com/aulikelion/"><img src="<%= image_path 'facebook' %>" style="width: 45px; height: 45px;"></a>
+            <a class="btn btn-primary btn-lg"  role="button" 
+            style ="width: 130px; text-align: center; background-color: #f4f4f4; border-color: black;  
+            color: black; border-width: 2px; font-family: 경기천년제목; padding: 3px 0px!important; margin-left: 15px;" <%= link_to 'Developers', abouts_path%> </a>
+
+
           </div>
         </div>
-
-<!-- Developers 버튼 형식으로 하는 코드 -->
-          <!--<div class = "hi"> -->
-          <!--  <a class="btn btn-primary btn-lg"  role="button" -->
-          <!--  style ="width: 200px; text-align: center; background-color: #f4f4f4; border-color: black;  -->
-          <!--  color: black; border-width: 2px; font-family: 경기천년제목;" <%= link_to 'Developers', abouts_path%> </a>-->
-          <!--</div>-->
-
 
       </div>
     </div>

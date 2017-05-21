@@ -6,6 +6,12 @@
   .booth_search{
     padding-top:60px; 
   }
+  <style>  
+#bb_table { border-collapse:collapse; }  
+#bb_table th, #tt_table td, #tt_table tr { border:1px solid black; }
+#bb_table th {padding: 0 20px 0 10px;}
+#bb_table td {padding-left:10px;}
+</style>
 </style>
 
 <p id="notice"><%= notice %></p>
@@ -21,18 +27,18 @@
 
 <h1>Listing Booths</h1>
 
-<table>
+<table id="bb_table">
   <thead>
     <tr>
-      <th>Day</th>
-      <th>Day2</th>
-      <th>Day3</th>
+      <th>24일</th>
+      <th>25일</th>
+      <th>26일</th>
       <th>Choose</th>
-      <th>Title</th>
-      <th>Area</th>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Tag list</th>
+      <th>부스/주점 이름</th>
+      <th>구역</th>
+      <th>학과/동아리 이름</th>
+      <th>첨부사진</th>
+      <th>태그목록</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -47,7 +53,7 @@
         <td><%= booth.title %></td>
         <td><%= booth.area %></td>
         <td><%= booth.name %></td>
-        <td><img src ="<%= booth.image.url%>"></td>
+        <td><%= image_tag(booth.image.url)%></td>
         <td><%= tag_icons booth.tag_list %></td>
         <td><%= link_to 'Show', booth %></td>
         <td><%= link_to 'Edit', edit_booth_path(booth) %></td>

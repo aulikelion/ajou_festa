@@ -1,72 +1,138 @@
 
+<script>
+    
+    function display(){
+        div1.style.display="none";
+        
+    }
+    
+    function display1(){
+        div1.style.display="";
+    }
+    
+</script>
 
-<div class="container" style="font-size:20px"> <!--이 내용 통째로 나중에 _timetable.html.erb로 이동(파셜로 만들어야됨) -->
-   
-   <div style="font-size:3rem; margin:2em 0; text-align:center">
-      <h1>아주대 축제 타임테이블</h1>
-   </div>
-   
-   
-   <!-- 반응형 요일별 버튼-->
-      <div class="timetable-button justify-content-center" id="tt_button">
-          <div class="filters col-md-4 btn-group js-radio-button-group p-2 justify-content-center" data-filter-group="date">
-            <button class="btn btn-lg btn-secondary is-checked" data-filter="*">전체</button>
-            <button class="btn btn-lg btn-secondary" data-filter=".tt_card_24">24(수)</button>
-            <button class="btn btn-lg btn-secondary" data-filter=".tt_card_25">25(목)</button>
-            <button class="btn btn-lg btn-secondary" data-filter=".tt_card_26">26(금)</button>
-          </div>
-      </div>
-   
-   
-<div class="grid">
-  
-   <div class="tt_column" style="margin:20px auto;text-align:center">  
-        <% i=24 #날짜카운터 %>
-        <% 1.upto(3) do %>
-          <div class="col-12 col-md-4 px-5" id="tt_column_<%=i%>">
-              
-              <div class="timetable-button2 mb-5">
-                  <div class="card-header" style="background-color:#a2ffe1">
-                    <h3><strong><%= i %>일</strong></h3>
+
+
+<div id="div1">
+    
+</div>
+
+
+<input type = "button" value="보이기" onclick = "display1()" />
+<input type = "button" value="숨기기" onclick = "display()" />
+
+<div class="section" id="main-timetable" style="margin-top:3em; ">
+  <div class="container" style="font-size:20px"> 
+     <div style="font-family:발레리노; font-size:3rem; color:white; margin-top:1.4em; margin-bottom:1em; text-align:center">
+        <h1>Timetable</h1>
+     </div>
+     
+     
+     <!-- 반응형 요일별 버튼-->
+      
+        <div class="timetable-button justify-content-center ml-2" id="tt_button" >
+          <div style="font-family:발레리노; font-size:3rem; color:white; margin-top:1em; margin-bottom:1em; text-align:center">
+          <h3> - Select the date - </h3>
+        </div>
+            <div class="filters col-md-4 btn-group js-radio-button-group p-2 justify-content-center" data-filter-group="date" >
+              <button class="ttb"  id="t_t" data-filter="t_t" ></button>
+              <button class="btn btn-secondary"  id="tt24" data-filter=".tt_card_24">24 (수)</button>
+              <button class="btn btn-secondary"  id="tt25" data-filter=".tt_card_25">25 (목)</button>
+              <button class="btn btn-secondary"  id="tt26" data-filter=".tt_card_26">26 (금)</button>
+            </div>
+        </div>
+
+      <div class="grid">
+         <div class="tt_column" style="margin:20px auto;text-align:center"  >
+          <% i=24 #날짜카운터 %>
+          <% 1.upto(3) do %>
+            <div class="col-12 col-md-4 px-5" id="tt_column_<%=i%>">
+
+              <div class="timetable-button2 card-inverse card-info mb-3 text-center">
+                  <div class="card-block">
+                      <blockquote class="card-blockquote" style="font-family:경기천년제목;">
+                       <h3> Day <%=i%> </h3>
+                       </blockquote>
                   </div>
               </div>
-              
-            <!--칼럼 제작에 필요한 코드-->
-            <% @timetable.where(date:i).each do |tt| %>
-                <%  tt_start_hour = tt.start_time.to_s[0..1].to_i - 12
-                    tt_start_hour = tt_start_hour.to_s + " : "
-                    tt_start_minute = tt.start_time.to_s[2..3] + "  ~  "  %>
-                    
-                <% tt_end_hour = (tt.end_time.to_s[0..1].to_i - 12).to_s + " : "
-                tt.end_time.to_s[2..3] == "00" ? tt_end_minute = " 00 " : tt_end_minute = " " + tt.end_time.to_s[2..3] %>
+            
                 
-                <% tt_play_time = (tt.end_time - tt.start_time) * 0.8 #프로그램 소요 시간에 따른 카드 height 길이 부여"%>
-                <% tt_play_time<60 ? tt_play_time = 60 : tt_play_time = tt_play_time # 너무 짧으면 글씨 짤려서 최소값 부여%>
-                <% tt_play_time_original = (tt.end_time - tt.start_time) # 단순히 총 플레이타임 몇분인지 보여주기 위한 값 %>
-            <!--cd 칼럼 제작에 필요한 코드-->
-                <%   %>
-            
-            
-                <div class="card text-center mb-5 tt_card_<%=i%> date-type">
-                  <div class="card-header" >
-                    <h3><strong><%= tt.name %></strong></h3>
+              <!--칼럼 제작에 필요한 코드-->
+              <% @timetable.where(date:i).each do |tt| %>
+                  <%  tt_start_hour = tt.start_time.to_s[0..1].to_i - 12
+                      tt_start_hour = tt_start_hour.to_s + " : "
+                      tt_start_minute = tt.start_time.to_s[2..3] +"   ~  "  %>
+                      
+                  <% tt_end_hour = (tt.end_time.to_s[0..1].to_i - 12).to_s + " : "
+                  tt.end_time.to_s[2..3] == "00" ? tt_end_minute = " 00 " : tt_end_minute = " " + tt.end_time.to_s[2..3] %>
+                  
+                  <% tt_play_time = 120 %> <!--프로그램 소요 시간에 따른 카드 height 길이 부여-->
+                  <%# tt_play_time < 60 ? tt_play_time = 120 : tt_play_time = tt_play_time  %> <!--너무 짧으면 글씨 짤려서 최소값 부여-->
+                  <% tt_play_time_original = (tt.end_time - tt.start_time) %> <!--단순히 총 플레이타임 몇분인지 보여주기 위한 값-->
+              <!--cd 칼럼 제작에 필요한 코드-->
+                  
+                  <div class="card text-center mb-2 tt_card_<%=i%> date-type" >
+                    
+                    <div class="card-block">
+                      <h3><strong><%= tt.name %></strong></h3>
+                      <br>
+                      
+                      <% if tt.name.include?("1부") %>
+                      <%=image_tag "timetables/cheers.gif", width:"150em"%>
+                      <% elsif tt.name.include?("2부") %>
+                      <%=image_tag "timetables/ggi.gif", width:"150em"%>
+                      <% elsif tt.name.include?("3부") %>
+                      <%=image_tag "timetables/cheers3.gif", width:"150em"%>
+                      <% elsif tt.name.include?("동아리") %>
+                      <%=image_tag "timetables/dongari.gif", width:"150em"%>
+                      <% elsif tt.name.include?("　") %>
+                      <%=image_tag "timetables/cheers2.gif", width:"140em"%>
+                      <% elsif tt.name.include?("시상") %>
+                      <%=image_tag "timetables/reward.gif", width:"150em"%>
+                      
+                      <% elsif tt.name.include?("San") %>
+                      <%=image_tag "timetables/산이.jpg", width:"150em"%>
+                      <% elsif tt.name.include?("악동") %>
+                      <%=image_tag "timetables/악뮤.jpg", width:"150em"%>
+                      <% elsif tt.name.include?("어쿠") %>
+                      <%=image_tag "timetables/어쿠.jpg", width:"150em"%>
+                      <% elsif tt.name.include?("스웨") %>
+                      <%=image_tag "timetables/스웨.jpg", width:"150em"%>
+                      <% elsif tt.name.include?("소란") %>
+                      <%=image_tag "timetables/소란.jpg", width:"150em"%>
+                      <% elsif tt.name.include?("먼데") %>
+                      <%=image_tag "timetables/먼데.jpg", width:"150em"%>
+                      <% elsif tt.name.include?("Bas") %>
+                      <%=image_tag "timetables/베이식.jpg", width:"150em"%>
+                      <% elsif tt.name.include?("크러쉬") %>
+                      <%=image_tag "timetables/크러쉬.jpg", width:"150em"%>
+                      <% elsif tt.name.include?("MAMA") %>
+                      <%=image_tag "timetables/마마무.jpg", width:"150em"%>
+                      <% elsif tt.name.include?("BAD") %>
+                      <%=image_tag "timetables/배드키즈.jpg", width:"150em"%>
+                      <%end%>
+                    </div>
+                    
+                    <div class="card-block" style="background-color:#">
+                      <h3 class="card-title d-flex align-items-center justify-content-center" style="font-size:0.9em;">
+                          <strong>
+                              <%= tt_start_hour + tt_start_minute %>
+                              <%= tt_end_hour + tt_end_minute %>
+                              <br></br>
+                              <%=tt.location %>
+                          </strong>
+                      </h3>
+                    </div>
                   </div>
-                  <div class="card-block" style="background-color:#<%=@colorpackage.sample%>">
-                    <h4 class="card-title d-flex align-items-center justify-content-center" style="line-height:1.5em;font-size:16px;height:<%=tt_play_time%>px">
-                        <strong>
-                            <%= tt_start_hour + tt_start_minute %> <%= tt_end_hour + tt_end_minute %>
-                            <br>
-                            <%= tt.content %>
-                        </strong>
-                    </h4>
-                    <a href="#" class="btn btn-success"><strong ><%=tt.location %></strong></a>
-                  </div>
-                </div>
-            <% end %>
-          </div>
-        <% i += 1%>
-        <% end %>
+                  
+              <% end %>
+            </div>
+            
+          <% i += 1%>
+          <% end %>
+          
+       </div>
      </div>
-   </div>
-   
+  </div>
 </div>

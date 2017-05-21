@@ -72,7 +72,7 @@ footer.footer {
   background: url('mainBackground.png') no-repeat center center;
   background-size: cover;
   width: 100vw;
-  height: 100vh;
+  height: 110vh;
 
 }
 
@@ -85,7 +85,7 @@ footer.footer {
 
 #maintitle{
   position: absolute; 
-  top: 10vh; 
+  top: 20vh; 
   bottom: 0; 
   left: 0; 
   right: 0;
@@ -93,6 +93,12 @@ footer.footer {
   height: auto; 
   width: 90vw;
 }
+@media (max-width: 480px){
+  #maintitle{
+    width:100vw;
+  }
+}
+
 
 /*라인업 이미지*/
 .main-lineup{
@@ -107,7 +113,7 @@ footer.footer {
       
     }
     #main-lineup { 
-      background: url('linesamplefinal.png') no-repeat center center;
+      background: url('lineupweb.png') no-repeat center center;
       background-size: cover;
       width: 100vw;
       height: 120vh;
@@ -117,7 +123,7 @@ footer.footer {
  
  @media (max-width: 480px){
     #main-lineup { 
-      background: url('lineup26.png') no-repeat center center;
+      background: url('lineup24.png') no-repeat center center;
       background-size: cover;
       width: 100vw;
       min-height: 90vh;  
@@ -126,7 +132,11 @@ footer.footer {
  
  
  
+ 
+ 
  /* 타임테이블 버튼 */
+ 
+
  
   @media (min-width: 480px){
     .timetable-button{
@@ -138,10 +148,22 @@ footer.footer {
    .timetable-button2{
      display: none;
    }
+    .ttb{
+      display: none;
+    }
  } 
  
- 
- 
+ /*타임테이블 배경이미지*/
+
+
+ .tt_background-image {
+  background: url('tt_bg.png') no-repeat center center fixed;
+  background-size: cover;
+  width: 100vw;
+
+}
+
+
  
  /*navbar font 적용*/
 .navbar {
@@ -295,6 +317,53 @@ p:nth-child(1) a {
 
 
 
+/*About us Developer*/
+
+.flip-container {
+    perspective: 1000px;
+   border:2px solid rgba(0,0,0,0) !important;
+}
+
+/* front pane, placed above back */
+.front{
+  z-index:2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+  background-size:100% 100%;
+}
+/* back, initially hidden pane */
+.back {
+    transform: rotateY(180deg);
+  background-size:100% 100%;
+}
+
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+    width: 23em;
+    height: 25em;
+   /*border:1px solid lightgray;*/
+}
+/* flip speed goes here */
+.flipper {
+    transition: 0.6s;
+   /* 하위요소에 3D 좌표값 지정 */
+    transform-style: preserve-3d;
+    position: relative;
+}
+/* hide back of pane during swap */
+.front, .back{
+  position: absolute;
+  backface-visibility:hidden;
+}
+
+
+
+
+
 /*footer css 적용*/
   #main-footer{
     color: #767070;
@@ -321,20 +390,6 @@ p:nth-child(1) a {
 /*footer css End*/
 
 
-/* 지도 위치별 부스/주점 카드배경색깔 지정 */
-.A {
-  background-color: rgba(254, 255, 153, 1);
-}
-.B {
-  background-color: rgba(255, 153, 154, 1);
-}
-.C {
-  background-color: rgba(153, 205, 255, 1);
-}
-.D {
-  background-color: rgba(153, 255, 205, 1);
-}
-
 /* 지도위치별 배경색깔 end */
 
 
@@ -343,10 +398,10 @@ p:nth-child(1) a {
 
 /* 모바일 화면에서 카드 폰트크기 조정 */
 @media (max-width: 480px){
-  #booths > div > div > div > h5{
+  div > div > h5,h3{
     font-size: 4.5vw;
   }
-  #booths > div > div > div > p {
+  div > div > p {
     font-size: 4vw;
   }
 }
@@ -354,31 +409,31 @@ p:nth-child(1) a {
 
 /* PC화면에서 폰트크기 조정 */
 @media (min-width: 480px) and (max-width: 700px) {
-  #booths > div > div > div > h5{
+  div > div > h5,h3{
     font-size: 4vw;
   }
         
-  #booths > div > div > div > p {
+  div > div > p {
     font-size: 3vw;
   }
 }
 
 @media (min-width: 700px) and (max-width: 1000px) {
-  #booths > div > div > div > h5{
+  div > div > h5,h3{
     font-size: 3vw;
   }
         
-  #booths > div > div > div > p {
+  div > div > p {
     font-size: 2vw;
   }
 }
 
 @media (min-width: 1000px){
-  #booths > div > div > div > h5{
+  div > div > h5,h3{
     font-size: 2vw;
   }
         
-  #booths > div > div > div > p {
+  div > div > p {
     font-size: 1.75vw;
   }
 }
@@ -386,10 +441,11 @@ p:nth-child(1) a {
 
 /* 부스 페이지 폰트 지정 */
 #booth-background-image > div > div > div > h1,
-#booths > div > div > div > div > h2,
-#booths > div > div > div > div > button, 
-#booths > div > div > div > h5, 
-#booths > div > div > div > p {
+#booths > div > div > div > div > h3,
+#booths > div > div > div > div > button > small,
+#booths > div > div > div > div > button,
+div > div > h5, 
+div > div > p {
   font-family: 경기천년제목!important;
 }
 
@@ -423,7 +479,7 @@ p:nth-child(1) a {
 }
 
 .black {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.1);
   width: inherit;
   height: inherit;
   
@@ -435,6 +491,9 @@ div.black > div.container {
   
 }
 
+.text-warning {
+  font-size:20px;
+}
 #booth-background-image > div > div > div > h1{
   display: table-cell;  
   vertical-align: middle;
@@ -452,6 +511,8 @@ h1.title {
   width: 20rem;
   height: 3rem;
 }
+
+
 
 #booth-background-image > div > div.container {
   top: 50%;
@@ -471,3 +532,71 @@ h1.title {
   width: 3rem;
   height: 3rem;
 }
+
+
+#booth-background-image > div > div > div > h1 {
+  font-size: 2.4rem;
+}
+
+
+
+
+@media (min-width: 1200px) {
+  div.card-social-material.row.icons {
+      margin-right: 0;
+      margin-left: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  div.card-social-material.row.icons {
+      margin-right: 0;
+      margin-left: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  div.card-social-material.row.icons {
+      margin-right: 0;
+      margin-left: 0;
+  }
+}
+
+@media (min-width: 576px) {
+  div.card-social-material.row.icons {
+      margin-right: 0;
+      margin-left: 0;
+  }
+}
+
+div.card-social-material.row.icons {
+      margin-right: 0;
+      margin-left: 0;
+}
+
+
+@media (min-width: 768px) {
+  div > div > h5 {
+    padding-top: 4rem;
+  }
+  div > div > p {
+    padding-bottom: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  div > div > h5 {
+    padding-top: 2rem;
+  }
+  div > div > p {
+    padding-bottom: 2rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .show1 {
+    display:none!important;
+  }
+}
+

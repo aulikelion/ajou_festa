@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
     
-  resources :abouts
+  resources :abouts , only: [:index] #인덱스 페이지만 필요할 것 같아서 설정했어요. 다른 뷰도 사용하시면 이거 지워주세요
   resources :neons
   get 'boothinfo/index'
+  get 'boothinfo' => 'boothinfo#index'
   get 'boothinfo/map'
   
   resources :booths
@@ -10,18 +11,19 @@ Rails.application.routes.draw do
   
   root 'home#index'
   
-  get 'home/lineup'
   get 'home/timetable'
-  get 'home/booth'
+  get 'home/lineup'
+  #get 'home/timetable'
+  #get 'home/booth'
   get 'home/map'
   get 'home/neon'
   get 'home/index'
+  get 'home' => 'home#index'
   get 'home/tt'
   
   devise_for :administrators #관리자 로그인 관련 설정입니다.
   
   get 'home/administrator_sitemap'
-  
   get 'admin' => 'home#administrator_sitemap' #root 주소 뒤에 /admin만 붙여도 관리자 페이지 갈 수 있게 해놨어요.
 
   
