@@ -27,7 +27,7 @@ main > div.container {
 }
 
 main.login {
-  background: url("login_back.png") no-repeat center center fixed;
+  background: url("<%= image_path(login_back.png)%>") no-repeat center center fixed;
   background-size: cover;
 }
 main {
@@ -74,7 +74,7 @@ footer.footer {
  
  /*메인 header image*/
 .main-image {
-  background: url('mainBackground.png') no-repeat center center;
+  background: url('<%= image_path(mainBackground.png)%>') no-repeat center center;
   background-size: cover;
   width: 100vw;
   height: 110vh;
@@ -82,7 +82,7 @@ footer.footer {
 }
 
 /*.section{*/
-/*  background: url('mainTitle.png') fixed no-repeat center center;*/
+/*  background: url('<%= image_path(mainTitle.png)%>') fixed no-repeat center center;*/
 /*  background-size: cover;*/
 /*  width: 90vw;*/
 /*  height: 100vh;*/
@@ -118,7 +118,7 @@ footer.footer {
       
     }
     #main-lineup { 
-      background: url('lineupweb.png') no-repeat center center;
+      background: url('<%= image_path(lineupweb.png)%>') no-repeat center center;
       background-size: cover;
       width: 100vw;
       height: 120vh;
@@ -128,7 +128,8 @@ footer.footer {
  
  @media (max-width: 480px){
     #main-lineup { 
-      background: url('lineup24.png') no-repeat center center;
+      
+      background: url('<%= image_path(lineup24.png)%>') no-repeat center center;
       background-size: cover;
       width: 100vw;
       min-height: 90vh;  
@@ -162,7 +163,7 @@ footer.footer {
 
 
  .tt_background-image {
-  background: url('tt_bg.png') no-repeat center center fixed;
+  background: url('<%= image_path(tt_bg.png)%>') no-repeat center center fixed;
   background-size: cover;
   width: 100vw;
 
@@ -451,7 +452,7 @@ p:nth-child(1) a {
 #booths > div > div > div > div > button,
 div > div > h5, 
 div > div > p {
-  font-family: 경기천년제목!important;
+  font-family: gyonggi!important;
 }
 
 
@@ -468,7 +469,7 @@ div > div > p {
     margin-top: 3rem;
     height: 50vh;
     width: 100%;
-    background: url(booth.png) no-repeat center center;
+    background: url('<%= image_path(booth.png)%>') no-repeat center center;
     background-size: cover;
   }
 }
@@ -478,7 +479,8 @@ div > div > p {
     margin-top: 3rem;
     height: 80vh;
     width: 100%;
-    background: url(booth.png) no-repeat center center;
+    
+    background: url('<%= image_path(booth.png)%>') no-repeat center center;
     background-size: cover;
   }
 }
