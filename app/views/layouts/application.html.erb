@@ -25,15 +25,15 @@
   <!-- 모바일 버튼으로 라인업 보기 -->
   <script>
     function button24_click(){
-      document.getElementById('main-lineup').style.backgroundImage= "url(assets/lineup24.png)"
+      document.getElementById('main-lineup').style.backgroundImage= "url('<%= image_path(assets/lineup24.png)%>')"
     }
     
     function button25_click(){
-      document.getElementById('main-lineup').style.backgroundImage= "url(assets/lineup25.png)"
+      document.getElementById('main-lineup').style.backgroundImage= "url('<%= image_path(assets/lineup25.png)%>')"
     }
     
     function button26_click(){
-      document.getElementById('main-lineup').style.backgroundImage= "url(assets/lineup26.png)"
+      document.getElementById('main-lineup').style.backgroundImage= "url('<%= image_path(assets/lineup26.png)%>')"
     }
   </script>
   <!--카카오톡 링크 공유시 썸네일 및 설명 멘트-->
@@ -98,16 +98,16 @@
     <div class = "wrapper"> 
       <div class="container pt-2 pb-2">
         <div class="row mb-2">
-          <div class="col-md-6 col-lg-6 col-xs-12 col-sm-8 nav-logo mx-auto">
-            <%= image_tag "likelion_logo.png", width: "100px" %> 
-            <%= image_tag "X_icon.png", width: "50px" %>
-            <%= image_tag "amore_logo.png", width: "90px", height: "90px" %>
+          <div class="col-md-8 col-lg-8 col-xs-12 col-sm-8 nav-logo mx-auto">
+            <p><span class="footer-span">LikeLion at AJOU Univ.</br>
+            </span> collaborate with A:MORE
+            </p>
           </div>
         </div>
         <div class="row">
           <div class="mt-1 mb-1 mx-auto">
-            <a href="http://plus.kakao.com/home/@aulikelion"><img src="<%= image_path 'kakao' %>" style="width: 40px; height: 40px;"></a>
-            <a href="http://www.aulikelion.club/"><img src="<%= image_path 'explorer' %>" style="width: 40px; height: 40px; margin: 0 10px;"></a>
+            <a href="http://plus.kakao.com/home/@aulikelion"><img src="<%= image_path 'footer_kakao' %>" style="width: 40px; height: 40px;"></a>
+            <a href="http://www.aulikelion.club/"><img src="<%= image_path 'footer_homepage' %>" style="width: 40px; height: 40px; margin: 0 10px;"></a>
             <a href="https://www.facebook.com/aulikelion/"><img src="<%= image_path 'facebook' %>" style="width: 45px; height: 45px;"></a>
             <a class="btn btn-primary btn-lg"  role="button" 
             style ="width: 130px; text-align: center; background-color: #f4f4f4; border-color: black;  
