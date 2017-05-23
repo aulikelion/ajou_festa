@@ -45,8 +45,8 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label "구역 선택" %><br>
-    <%= f.select(:area, ['A', 'B', 'C', 'D']) %>
+    <%= f.label "구역 선택(부스는 booth선택)" %><br>
+    <%= f.select(:area, ['A', 'B', 'C', 'D', 'booth']) %> <!--부스 선택가능-->
   </div>
   <div class="field">
     <%= f.label "학과나 동아리 이름" %><br>

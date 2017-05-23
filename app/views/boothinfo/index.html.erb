@@ -113,7 +113,7 @@
                     <span class="text-white" style="font-family: gyonggi;"><%= area %></span>
                   </div>
                   <div class="col-4">
-                    <a href="<%= boothinfo_map_path%>?mode=<%=booth.choose%>"><i class="fa fa-map-marker icon text-white"></i></a>
+                    <a href="<%= boothinfo_map_path%>?mode=<%=booth.choose%>&area=<%=booth.area%>&title=<%=booth.title%>"><i class="fa fa-map-marker icon text-white"></i></a>
                   </div>
                 </div>
                 </div>
@@ -138,8 +138,8 @@
               </div>
               <div class="modal-body">
                 <p style="text-align:center;"><%=image_tag(booth.image.url)%></p>
-                <p class="text-warning"><small><%= booth.name %></small></p>
-                <p class="text-warning"><small><%= tag_info_icons booth.tag_list %></small></p>
+                <p class="text-warning" style="font-size:4em"><small><%= booth.name %></small></p>
+                <p class="text-warning" style="font-size:4em"><small><%= tag_info_icons booth.tag_list %></small></p>
 
               </div>
               <div class="modal-footer">

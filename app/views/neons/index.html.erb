@@ -1,34 +1,61 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="text-align:center">
 
-<h1 style="margin-top:10rem">전광판 수동 제어창</h1>
-<hr>
-<h2>입력된 글 내용들이 랜덤으로 메인화면에 노출됩니다.</h2>
-<hr>
-<h3>만약 현시간에 맞는 원래 타임테이블 정보를 노출시키려면, <br><strong>수동 입력하신 모든 전광판 내용</strong>을 지워주셔야 됩니다.</h3>
-<hr>
-
-<table>
-  <thead>
-    <tr>
-      <th>전광판에 표시되는 내용</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @neons.each do |neon| %>
+  <h1 style="margin-top:10rem">전광판 수동 제어창</h1><hr>
+  <h2>입력된 글 내용들이 랜덤하게 메인화면에 나타납니다.</h2><br>
+  
+  <table style="margin:0 auto" class="neon_table">
+    <thead>
       <tr>
-        <td><%= neon.message %></td>
-        <td><%= link_to '자세히', neon %> | </td>
-        <td><%= link_to '수정', edit_neon_path(neon) %> | </td>
-        <td><%= link_to '삭제', neon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th class="index">전광판 표시 내용</th>
+        <th colspan="3" style="text-align:center">-</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+  
+    <tbody class="neon_table">
+      <% @neons.each do |neon| %>
+        <tr>
+          <td><%= neon.message %></td>
+          <td class="note"><%= link_to '자세히', neon %>  </td>
+          <td class="note"><%= link_to '수정', edit_neon_path(neon) %> </td>
+          <td class="note"><%= link_to '삭제', neon, method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+  <%= render 'form' %>
+  <!--<%= link_to '새로 전광판 메세지 만들기', new_neon_path %> -->
+  <br>
+  <%= link_to '관리자 사이트맵 바로가기', home_administrator_sitemap_path %>
+  <div style="margin-top:30px"></div>  <!-- 도저히 간격을 만들 방법이 없어서 강제로 넓힘 -->
+  
+  <h3>실제 공연중인 정보를 전광판에 표시하시려면 <br>
+  <strong>수동으로 입력하신 모든 전광판 내용</strong>을 지워주셔야 됩니다.</h3>
+  <hr>
+</div>
 
-<br>
 
-<%= link_to '새로 전광판 메세지 만들기', new_neon_path %> 
-<br>
-<%= link_to '관리자 사이트맵 바로가기', home_administrator_sitemap_path %>
+
+<!--   style   ------------------------------------------------------------------------------->
+
+<style>
+  .neon_table thead,.neon_table tr, .neon_table th,.neon_table td, table.neon_table{
+    border:1px solid black;
+    padding-top:5px;
+    padding-bottom:5px;
+  }
+  .neon_table td{
+    padding-left:10px !important;
+    padding-right:10px !important;
+  }
+  .neon_table .index{
+    min-width:150px;
+    text-align:center;
+  }
+  .neon_table .note{
+    width:auto;
+    padding:0 10px;
+    text-align:center;
+  }
+</style>
