@@ -55,7 +55,9 @@ div.icons a[onclick] {
 /*지도 크기 밑 구역 메세지 폰트 스타일*/
 @media screen and (min-width: 699px){
   .mapimage img{
-    width:60%;
+    width:50%;
+  display: flex;
+  align-items: center;
   }
 }
 

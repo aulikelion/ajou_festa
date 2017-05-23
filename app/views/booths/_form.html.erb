@@ -1,67 +1,86 @@
-<style> <!--선택 안보이는 것 해결 -->
+<style> /*선택 안보이는 것 해결*/
   select{
     display:block;  
   }
   *{
     font-color:white;
   }
+  .booth_new .field{
+    padding-top:25px;
+  }
 </style>
-<%= form_for(@booth) do |f| %>
-  <% if @booth.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@booth.errors.count, "error") %> prohibited this booth from being saved:</h2>
 
-      <ul>
-      <% @booth.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="container" style="padding-top:0px">
+  <%= form_for(@booth) do |f| %>
+    <% if @booth.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@booth.errors.count, "error") %> prohibited this booth from being saved:</h2>
+  
+        <ul>
+        <% @booth.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    
+<h5 style="margin-top: 30px; font-weight: bold;"> [공지!!]24일만 할 경우 25일과 26일에는 24, 25, 26을 제외한 의미없는 날짜를 입력하셔야 됩니다.</h5><br><br>
+<h6>EX1. 24일만 하는 경우: 24일에는 24일을 선택하고, 25일과 26일은 24, 25, 26일을 제외한 1일, 18일, 3일.... 등의 날짜를 선택하셔야 합니다. <br><br>
+EX2. 24~25일을 하는 부스 : 24일에는 24일, 25일에는 25일을 선택하고, 26일에는 2일, 5일, 9일.... 등의 날짜를 선택하셔야 합니다. <br><br>
+EX3. 24, 25, 26일 모두 운영하는 경우: 24일에는 24일, 25일에는 25일, 26일에는 26일을 <strong>꼭!!!!!</strong> 정확히 입력해 주셔야 합니다.<br><br>
+EX4. 25, 26일을 모두 운영 : 24일에는 다른 날짜(예를들면 1일), 25일에는 25일, 26일에는 26일을 정확히 입력해 주셔야 합니다. <br><br>
+</h6>
+<h6><strong>다른 날짜를 선택하면 안됩니다!!!!!</strong></h6>
+<hr>
+
+    <div class ="pt-2 booth_new">
+      <div class="field">
+      <%= f.label "24일에 있다면 날짜 정확히 입력(아래도 똑같이)" %><br>
+      <%= f.date_select(:sche, :order => [:month, :day]) %>
+      </div>
+      
+      
+    
+      <div class="field">
+      <%= f.label "25일" %><br>
+      <%= f.date_select(:sche_2, :order => [:month, :day]) %>
+      </div>  
+    
+      <div class="field">
+      <%= f.label "26일" %><br>
+      <%= f.date_select(:day3, :order => [:month, :day]) %>
+      </div>
+      
+    <div class="field">
+      <%= f.label  "주점/부스 선택"%><br>
+      <%= f.select(:choose, ['선택', '주점', '부스']) %>
     </div>
+    <div class="field">
+      <%= f.label "주점/부스 이름" %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label "구역 선택(주점만, 부스는 booth선택)" %><br>
+      <%= f.select(:area, ['A', 'B', 'C', 'D', 'booth']) %> <!--부스 선택가능-->
+    </div>
+    <div class="field">
+      <%= f.label "학과나 동아리 이름" %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label "첨부이미지 한개" %><br>
+      <%= f.file_field :image %>
+    </div>
+    <div>
+      <%= f.label "태그 목록" %><br>
+      <%= f.text_field :tag_list, placeholder: '하나 이상의 태그는 콤마(,)로 구분하여 입력하세요.', style:"width:400px" %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+    
+  </div>  
   <% end %>
-  <div class ="pt-2">
-    <div class="field">
-    <%= f.label "24일에 있다면 날짜 정확히 입력(아래도 똑같이)" %><br>
-    <%= f.date_select(:sche, :order => [:month, :day]) %>
-    </div>
-    
-    
   
-    <div class="field">
-    <%= f.label "25일" %><br>
-    <%= f.date_select(:sche_2, :order => [:month, :day]) %>
-    </div>  
-  
-    <div class="field">
-    <%= f.label "26일" %><br>
-    <%= f.date_select(:day3, :order => [:month, :day]) %>
-    </div>
-    
-  <div class="field">
-    <%= f.label  "주점/부스 선택"%><br>
-    <%= f.select(:choose, ['선택', '주점', '부스']) %>
-  </div>
-  <div class="field">
-    <%= f.label "주점/부스 이름" %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label "구역 선택(부스는 booth선택)" %><br>
-    <%= f.select(:area, ['A', 'B', 'C', 'D', 'booth']) %> <!--부스 선택가능-->
-  </div>
-  <div class="field">
-    <%= f.label "학과나 동아리 이름" %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label "첨부이미지 한개" %><br>
-    <%= f.file_field :image %>
-  </div>
-  <div>
-    <%= f.label "태그 목록" %><br>
-    <%= f.text_field :tag_list, placeholder: '하나 이상의 태그는 콤마(,)로 구분하여 입력하세요.' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-</div>  
-<% end %>
+  </div>  

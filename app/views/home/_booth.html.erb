@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class = "wrapper"> 
-                <button class="btn btn-primary btn-lg ripple_button" onclick="location.href='<%= boothinfo_index_path %>'"  style ="width: 200px; text-align: center; background-color: #ffffff; border-color: black;  color: black; border-width: 2.5px; font-family: gyonggi;">검색하러 가기 >_<</button>
+                <a class="btn btn-primary btn-lg ripple_button" href="<%= boothinfo_index_path %>"  style ="width: 200px; text-align: center; background-color: #ffffff; border-color: black;  color: black; border-width: 2.5px; font-family: gyonggi;">검색하러 가기 >_<</a>
             </div>
         </div>
     </section>
@@ -24,71 +24,4 @@
       margin-top: 150px;
       margin-bottom: 150px;
     }
-    
-    
-    /*이 아래로는 부스 검색으로 가는 링크(검색하러 가기 >_<) 클릭할 때 애니메이션 효과ripple effect 만드는 설정*/
-  
-  /*  Ripple */
-  
-  .ripple {
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(123, 123, 123, 0.4);
-    transform: scale(0);
-    z-index:999;
-    opacity: 1;
-  }
-  .rippleEffect {
-      animation: rippleDrop .6s linear;
-  }
-  
-  @keyframes rippleDrop {
-    100% {
-      transform: scale(2);
-      opacity: 0;
-    }
-  }
-    </style>
-    
-    
-    
-    
-    <script>
-        
-      $(".ripple_button").click(function (e) {
-    
-    // Remove any old one
-    $(".ripple").remove();
-  
-    // Setup
-    var posX = $(this).offset().left,
-        posY = $(this).offset().top,
-        buttonWidth = $(this).width(),
-        buttonHeight =  $(this).height();
-    
-    // Add the element
-    $(this).prepend("<span class='ripple'></span>");
-  
-    
-   // Make it round!
-    if(buttonWidth >= buttonHeight) {
-      buttonHeight = buttonWidth;
-    } else {
-      buttonWidth = buttonHeight; 
-    }
-    
-    // Get the center of the element
-    var x = e.pageX - posX - buttonWidth / 2;
-    var y = e.pageY - posY - buttonHeight / 2;
-    
-   
-    // Add the ripples CSS and start the animation
-    $(".ripple").css({
-      width: buttonWidth,
-      height: buttonHeight,
-      top: y + 'px',
-      left: x + 'px'
-    }).addClass("rippleEffect");
-  });
-    </script>
+ </style>

@@ -6,7 +6,7 @@
   .booth_search{
     padding-top:60px; 
   }
-  <style>  
+</style>  
 #bb_table { border-collapse:collapse; }  
 #bb_table th, #tt_table td, #tt_table tr { border:1px solid black; }
 #bb_table th {padding: 0 20px 0 10px;}
@@ -15,6 +15,13 @@
 </style>
 
 <p id="notice"><%= notice %></p>
+
+
+
+<h4 style="font-weight:bold; margin-top: 60px;">공지!</h4>
+<h5>1. 24일만 할 경우 25일과 26일에는 24, 25, 26을 제외한 다른 숫자를 입력하셔야 됩니다.<br>
+2. 주점이 아닌 부스는 구역을 A B C D가 아닌 'booth'로 입력해주셔야 합니다!</h5>
+
 
 <%= search_form_for @search do |f| %>
   <div class = "field">
