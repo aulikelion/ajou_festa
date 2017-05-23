@@ -1,6 +1,11 @@
-<h1>Editing Neon</h1>
+<div class="container" style="padding-top:150px"> 
 
-<%= render 'form' %>
+<h1>전광판 수정하기</h1>
 
-<%= link_to 'Show', @neon %> |
-<%= link_to 'Back', neons_path %>
+<%= render 'editform' %>
+
+<div style="padding-top:10px"></div>
+<%= link_to '자세히보기', @neon %> |
+<%= link_to '전체목록보기', neons_path %>
+
+</div>

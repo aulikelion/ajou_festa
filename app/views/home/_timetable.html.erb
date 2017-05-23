@@ -13,9 +13,8 @@
           <div style="font-family:balle; font-size:3rem; color:white; margin-top:1em; margin-bottom:1em; text-align:center">
           <h3> - Select the date - </h3>
         </div>
-            <div class="filters col-md-4 btn-group js-radio-button-group p-2 justify-content-center" data-filter-group="date" >
-              <button class="btn btn-secondary is-checked"  id="all" data-filter="*">전체</button>
-              <button class="btn btn-secondary"  id="tt24" data-filter=".tt_card_24">24 (수)</button>
+            <div class="filters col-md-4 btn-group  justify-content-center" data-filter-group="date" >
+              <button class="btn btn-secondary is-checked"  id="tt24" data-filter=".tt_card_24">24 (수)</button>
               <button class="btn btn-secondary"  id="tt25" data-filter=".tt_card_25">25 (목)</button>
               <button class="btn btn-secondary"  id="tt26" data-filter=".tt_card_26">26 (금)</button>
             </div>
@@ -57,38 +56,38 @@
                       <br>
                       
                       <% if tt.name.include?("1부") %>
-                      <%=image_tag "timetables/cheers.gif", width:"150em", height: "150em" %>
+                        <%=image_tag "timetables/cheers.gif", width:"150em", height: "150em" %>
                       <% elsif tt.name.include?("2부") %>
-                      <%=image_tag "timetables/ggi.gif", width:"150em", height: "150em"%>
+                        <%=image_tag "timetables/ggi.gif", width:"150em", height: "150em"%>
                       <% elsif tt.name.include?("3부") %>
-                      <%=image_tag "timetables/cheers3.gif", width:"150em", height: "150em"%>
+                        <%=image_tag "timetables/cheers3.gif", width:"150em", height: "150em"%>
                       <% elsif tt.name.include?("동아리") %>
-                      <%=image_tag "timetables/dongari.gif", width:"150em", height: "150em"%>
-                      <% elsif tt.name.include?("　") %>
-                      <%=image_tag "timetables/cheers2.gif", width:"140em", height: "150em"%>
-                      <% elsif tt.name.include?("시상") %>
-                      <%=image_tag "timetables/reward.gif", width:"150em", height: "150em"%>
+                        <%=image_tag "timetables/dongari.gif", width:"150em", height: "150em"%>
+                      <% elsif tt.name.include?("끼 콘테스트 시상") %>
+                        <%=image_tag "timetables/reward.gif", width:"150em", height: "150em"%>
+                      <% elsif tt.name.include?("끼 콘테스트") %>
+                        <%=image_tag "timetables/cheers2.gif", width:"150em", height: "150em"%>
                       
-                      <% elsif tt.name.include?("San") %>
-                      <%=image_tag "timetables/sane.jpg", width:"150em", height: "150em"%>
+                      <% elsif tt.name.include?("산이") %>
+                        <%=image_tag "timetables/sane.jpg", width:"150em", height: "150em"%>
                       <% elsif tt.name.include?("악동") %>
-                      <%=image_tag "timetables/akmu.jpg", width:"150em", height: "150em"%>
+                        <%=image_tag "timetables/akmu.jpg", width:"150em", height: "150em"%>
                       <% elsif tt.name.include?("어쿠") %>
-                      <%=image_tag "timetables/aku.jpg", width:"150em", height: "150em"%>
+                        <%=image_tag "timetables/aku.jpg", width:"150em", height: "150em"%>
                       <% elsif tt.name.include?("스웨") %>
-                      <%=image_tag "timetables/swe.jpg", width:"150em", height: "150em"%>
+                        <%=image_tag "timetables/swe.jpg", width:"150em", height: "150em"%>
                       <% elsif tt.name.include?("소란") %>
-                      <%=image_tag "timetables/soran.jpg", width:"150em", height: "150em"%>
+                        <%=image_tag "timetables/soran.jpg", width:"150em", height: "150em"%>
                       <% elsif tt.name.include?("먼데") %>
-                      <%=image_tag "timetables/mande.jpg", width:"150em", height: "150em"%>
-                      <% elsif tt.name.include?("Basic") %>
-                      <%=image_tag "timetables/basic.jpg", width:"150em", height: "150em"%>
+                        <%=image_tag "timetables/mande.jpg", width:"150em", height: "150em"%>
+                      <% elsif tt.name.include?("베이식") %>
+                        <%=image_tag "timetables/basic.jpg", width:"150em", height: "150em"%>
                       <% elsif tt.name.include?("크러쉬") %>
-                      <%=image_tag "timetables/crush.jpg", width:"150em", height: "150em"%>
-                      <% elsif tt.name.include?("MAMAMOO") %>
-                      <%=image_tag "timetables/mamamu.jpg", width:"150em", height: "150em"%>
-                      <% elsif tt.name.include?("BAD") %>
-                      <%=image_tag "timetables/badkids.jpg", width:"150em", height: "150em"%>
+                        <%=image_tag "timetables/crush.jpg", width:"150em", height: "150em"%>
+                      <% elsif tt.name.include?("마마무") %>
+                        <%=image_tag "timetables/mamamu.jpg", width:"150em", height: "150em"%>
+                      <% elsif tt.name.include?("배드") %>
+                        <%=image_tag "timetables/badkids.jpg", width:"150em", height: "150em"%>
                       <%end%>
                     </div>
                     

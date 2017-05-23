@@ -1,9 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Message:</strong>
-  <%= @neon.message %>
-</p>
-
-<%= link_to 'Edit', edit_neon_path(@neon) %> |
-<%= link_to 'Back', neons_path %>
+<div class="container" style="padding-top:150px">
+  
+    <h2>전광판 상세보기</h2><br>
+    <hr>
+  <h3 style="margin-bottom:50px">
+    <%= @neon.message %>
+  </h3>
+  
+  <%= link_to '수정하기', edit_neon_path(@neon) %> |
+  <%= link_to '전체목록보기', neons_path %> |
+  <%= link_to '삭제하기', @neon, method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' } %>
+</div>

@@ -41,12 +41,29 @@ div.card {
 div.icons a[onclick] {
   cursor: pointer; }
 
+
 @media screen and (max-width: 768px) {
   html {
     font-size: 12px; }
 
   h1.title {
     width: 100%;
-    text-align: center; } }
+    text-align: center; } 
 
+}
+
+/*지도 크기 밑 구역 메세지 폰트 스타일*/
+@media screen and (min-width: 699px){
+  .mapimage img{
+    width:60%;
+  }
+}
+
+@media(max-width: 698px){
+  .mapimage img{
+    width:100%;
+  }
+}
+
+ 
 /*# sourceMappingURL=boothinfo.css.map */

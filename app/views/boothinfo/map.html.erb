@@ -1,19 +1,18 @@
 <div class="mapimage pt-5"><!--맵 이미지 크기 조정-->
 <% if params[:mode] == "주점" then %>
-    <% if params[:area] == "A" then %>
-    <p><%=params[:title]%>은 <%=params[:area]%>구역에 있습니다!</p>
+    <div class ="mapexplain">
+        <p class ="pb-0" style="display:inline-block"><%=params[:title]%>은 <%=params[:area]%>구역에 있습니다!</p>
+        <a class="btn btn-primary btn-lg" role="button" style="width: 130px; text-align: center; background-color: #f4f4f4; border-color: black;  
+          color: black; border-width: 2px; font-family: gyonggi; padding: 3px 0px!important; margin-left: 15px;" <a="" href="/boothinfo/index">돌아가기>_<</a>
+    </div>
     <%= image_tag "map.png" %>
-    <% elsif params[:area] == "B" then %>
-    <%= image_tag "map.png" %>
-    <% elsif params[:area] == "C" then %>
-    <%= image_tag "map.png" %>
-    <% elsif params[:area] == "D" then %>
-    <%= image_tag "map.png" %>
-    <% end %>
 <% elsif params[:mode] == "부스" then %>
+    <div class ="mapexplain">
+        <p class ="pb-0"style="display:inline-block"><%=params[:title]%>은 여기 있습니다!</p>
+        <a class="btn btn-primary btn-lg" role="button" style="width: 130px; text-align: center; background-color: #f4f4f4; border-color: black;  
+          color: black; border-width: 2px; font-family: gyonggi; padding: 3px 0px!important; margin-left: 15px;" <a="" href="/boothinfo/index">돌아가기>_<</a>
+    </div>
     <%= image_tag "campus_map.png"%>
 <% end %>
-<a class="btn btn-primary btn-lg" role="button" style="width: 130px; text-align: center; background-color: #f4f4f4; border-color: black;  
-      color: black; border-width: 2px; font-family: gyonggi; padding: 3px 0px!important; margin-left: 15px;" <a="" href="/boothinfo/index">돌아가기>_<</a>
 
 </div>

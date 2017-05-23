@@ -1,0 +1,22 @@
+<%= form_for(@neon) do |f| %>
+  <% if @neon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@neon.errors.count, "error") %> 다음과 같은 이유로 전광판 수동 입력에 실패하였습니다:</h2>
+      <ul>
+      <% @neon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :message, '수정할 내용 :' %><br>
+    <%= f.text_field :message %>
+  </div>
+  <div class="actions" style="padding-top:10px">
+    <%= f.submit '수정' %>
+  </div>
+<% end %>
+
+<!--<h6 style="line-height:1.5em">*빈 칸에 전광판 내용을 입력해주시고 Create Neon 버튼을 눌러주세요</h6>-->

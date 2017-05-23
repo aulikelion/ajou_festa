@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
     
   resources :abouts , only: [:index] #인덱스 페이지만 필요할 것 같아서 설정했어요. 다른 뷰도 사용하시면 이거 지워주세요
-  resources :neons
+  resources :neons, except: :new
   get 'boothinfo/index'
   get 'boothinfo' => 'boothinfo#index'
   get 'boothinfo/map'

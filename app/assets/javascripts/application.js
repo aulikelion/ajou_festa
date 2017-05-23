@@ -52,6 +52,9 @@ $(document).ready(function(){
     $grid.isotope({ filter: filterValue });
   });
   
+  
+  
+  
   // change is-checked class on buttons
   $('.btn-group').each( function( i, buttonGroup ) {
     var $buttonGroup = $( buttonGroup );
@@ -60,6 +63,8 @@ $(document).ready(function(){
       $( this ).addClass('is-checked');
     });
   });
+  
+  
   
   // flatten object by concatting values
   function concatValues( obj ) {
