@@ -49,6 +49,9 @@ div.icons a[onclick] {
   h1.title {
     width: 100%;
     text-align: center; } 
+    .text-warning{
+      font-size:2em !important;
+    }
 
 }
 
@@ -59,11 +62,43 @@ div.icons a[onclick] {
   display: flex;
   align-items: center;
   }
+  .info-text{
+    font-size:2em !important;
+    color: black!important;
+  }
+  .info-text a{
+    border:1px solid #eaeaea;
+    border-radius:3px;
+    background-color: #f4f4f4;
+    padding:.1em .2em;
+    &:hover {
+      text-decoration: none;
+      color: white;
+      background-color: #265484;
+      border:1px solid #265484;
+    }
+  }
 }
 
 @media(max-width: 698px){
   .mapimage img{
     width:100%;
+  }
+    .info-text{
+      font-size:1em !important;
+      color: black!important;
+    }
+  .info-text a{
+    border:1px solid #eaeaea;
+    border-radius:3px;
+    background-color: #f4f4f4;
+    padding:.1em .2em;
+    &:hover {
+      text-decoration: none;
+      color: white;
+      background-color: #265484;
+      border:1px solid #265484;
+    }
   }
 }
 

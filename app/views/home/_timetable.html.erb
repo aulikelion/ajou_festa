@@ -64,10 +64,10 @@
                       <%=image_tag "timetables/cheers3.gif", width:"150em", height: "150em"%>
                       <% elsif tt.name.include?("동아리") %>
                       <%=image_tag "timetables/dongari.gif", width:"150em", height: "150em"%>
-                      <% elsif tt.name.include?("　") %>
-                      <%=image_tag "timetables/cheers2.gif", width:"140em", height: "150em"%>
-                      <% elsif tt.name.include?("시상") %>
+                      <% elsif tt.name.include?("끼 콘테스트 시상") %>
                       <%=image_tag "timetables/reward.gif", width:"150em", height: "150em"%>
+                      <% elsif tt.name.include?("끼 콘테스트") %>
+                      <%=image_tag "timetables/cheers2.gif", width:"150em", height: "150em"%>
                       
                       <% elsif tt.name.include?("San") %>
                       <%=image_tag "timetables/sane.jpg", width:"150em", height: "150em"%>
@@ -87,7 +87,7 @@
                       <%=image_tag "timetables/crush.jpg", width:"150em", height: "150em"%>
                       <% elsif tt.name.include?("MAMAMOO") %>
                       <%=image_tag "timetables/mamamu.jpg", width:"150em", height: "150em"%>
-                      <% elsif tt.name.include?("배드키즈") %>
+                      <% elsif tt.name.include?("BAD") %>
                       <%=image_tag "timetables/badkids.jpg", width:"150em", height: "150em"%>
                       <%end%>
                     </div>

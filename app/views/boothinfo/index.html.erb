@@ -138,8 +138,8 @@
               </div>
               <div class="modal-body">
                 <p style="text-align:center;"><%=image_tag(booth.image.url)%></p>
-                <p class="text-warning" style="font-size:4em"><small>주체 : </small><%= booth.name %></p>
-                <p class="text-warning" style="font-size:4em"><small>태그 : </small><%= tag_info_icons booth.tag_list %></p>
+                <p class="info-text" ><small>학과/동아리 : </small><%= booth.name %></p>
+                <span class="info-text" ><small>태그 : </small><%= tag_info_icons booth.tag_list %></span>
 
               </div>
               <div class="modal-footer">
