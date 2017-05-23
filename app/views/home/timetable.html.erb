@@ -5,7 +5,7 @@
   
   
   <div class="container" style="font-size:20px"> 
-     <div style="font-family:balle; font-size:3rem; color:white; margin-top:1.4em; margin-bottom:1em; text-align:center">
+     <div style="font-family:balle; font-size:3rem; color:black; margin-top:1.4em; margin-bottom:1em; text-align:center">
         <h1>Timetable</h1>
      </div>
      
@@ -13,14 +13,13 @@
      <!-- 반응형 요일별 버튼-->
       
         <div class="timetable-button justify-content-center ml-2" id="tt_button" >
-          <div style="font-family:balle; font-size:3rem; color:white; margin-top:1em; margin-bottom:1em; text-align:center">
+          <div style="font-family:balle; font-size:3rem; color:black; margin-top:1em; margin-bottom:1em; text-align:center">
           <h3> - Select the date - </h3>
         </div>
             <div class="filters col-md-4 btn-group js-radio-button-group p-2 justify-content-center" data-filter-group="date" >
-              <button class="btn btn-secondary is-checked"   data-filter="*">전체</button>
-              <button class="btn btn-secondary"   data-filter=".tt_card_24">24 (수)</button>
-              <button class="btn btn-secondary"   data-filter=".tt_card_25">25 (목)</button>
-              <button class="btn btn-secondary"   data-filter=".tt_card_26">26 (금)</button>
+              <button class="btn btn-secondary"   id=".tt_card_24">24 (수)</button>
+              <button class="btn btn-secondary"   id=".tt_card_25">25 (목)</button>
+              <button class="btn btn-secondary"   id=".tt_card_26">26 (금)</button>
             </div>
         </div>
 
@@ -53,7 +52,7 @@
                   <% tt_play_time_original = (tt.end_time - tt.start_time) %> <!--단순히 총 플레이타임 몇분인지 보여주기 위한 값-->
               <!--cd 칼럼 제작에 필요한 코드-->
                   
-                  <div class="card text-center mb-2 tt_card_<%=i%> date-type" >
+                  <div class="card text-center mb-2 tt_card_<%=i%>    date-type" >
                     
                     <div class="card-block">
                       <h3 style="font-size:0.9em;"><strong><%='< '%><%= tt.name %><%=' >'%></strong></h3>

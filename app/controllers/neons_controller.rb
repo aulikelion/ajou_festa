@@ -7,6 +7,7 @@ class NeonsController < ApplicationController
   # GET /neons.json
   def index
     @neons = Neon.all
+    @neon = Neon.new
   end
 
   # GET /neons/1
