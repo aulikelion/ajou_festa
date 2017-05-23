@@ -18,49 +18,50 @@
       </ul>
     </div>
   <% end %>
-
+  <div class ="pt-2">
     <div class="field">
-    <%= f.label :sche %><br>
+    <%= f.label "24일에 있다면 날짜 정확히 입력(아래도 똑같이)" %><br>
     <%= f.date_select(:sche, :order => [:month, :day]) %>
     </div>
     
     
   
     <div class="field">
-    <%= f.label :sche_2 %><br>
+    <%= f.label "25일" %><br>
     <%= f.date_select(:sche_2, :order => [:month, :day]) %>
     </div>  
   
     <div class="field">
-    <%= f.label :day3 %><br>
+    <%= f.label "26일" %><br>
     <%= f.date_select(:day3, :order => [:month, :day]) %>
     </div>
     
   <div class="field">
-    <%= f.label :choose %><br>
+    <%= f.label  "주점/부스 선택"%><br>
     <%= f.select(:choose, ['선택', '주점', '부스']) %>
   </div>
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label "주점/부스 이름" %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :area %><br>
+    <%= f.label "구역 선택" %><br>
     <%= f.select(:area, ['A', 'B', 'C', 'D']) %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label "학과나 동아리 이름" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :image %><br>
+    <%= f.label "첨부이미지 한개" %><br>
     <%= f.file_field :image %>
   </div>
   <div>
-    <%= f.label :tag_list %><br>
+    <%= f.label "태그 목록" %><br>
     <%= f.text_field :tag_list, placeholder: '하나 이상의 태그는 콤마(,)로 구분하여 입력하세요.' %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>  
 <% end %>

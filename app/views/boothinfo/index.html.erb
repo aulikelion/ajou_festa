@@ -1,4 +1,4 @@
-<div id="booth1"> <!-- 부스 검색기능 활성화를 위해 div로 전체 감싸줌 -->
+<div id="booth1" style="background-color:white!important;"> <!-- 부스 검색기능 활성화를 위해 div로 전체 감싸줌 -->
 
     <!--부스 페이지에 배경으로 부스/주점 이미지 삽입-->
   <div class="back-image mt-10" id="booth-background-image">
@@ -110,7 +110,7 @@
                     <a onclick="showModal(<%= card_count %>)"><i class="fa fa-picture-o icon text-white"></i></a>
                   </div>
                   <div class="col-3 my-auto" style="font-size: 1.5rem;">
-                    <span class="text-white" style="font-family: 경기천년제목;"><%= area %></span>
+                    <span class="text-white" style="font-family: gyonggi;"><%= area %></span>
                   </div>
                   <div class="col-4">
                     <a href="<%= boothinfo_map_path%>?mode=<%=booth.choose%>"><i class="fa fa-map-marker icon text-white"></i></a>
@@ -151,7 +151,7 @@
         <% card_count += 1 %>
       <% end %> <!-- 카드 끝-->
       <a class="btn btn-primary btn-lg" role="button" style="width: 100px; text-align: center; background-color: #f4f4f4; border-color: black;  
-      color: black; border-width: 2px; font-family: 경기천년제목; padding: 3px 0px!important; margin-left: 15px;" <a="" href="/boothinfo/index">전체 목록</a>
+      color: black; border-width: 2px; font-family: gyonggi; padding: 3px 0px!important; margin-left: 15px;" <a="" href="/boothinfo/index">전체 목록</a>
     </div>
   </div>
 </div>
